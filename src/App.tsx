@@ -21,6 +21,7 @@ import { CostsPage } from './pages/CostsPage';
 import { ImplementationPage } from './pages/ImplementationPage';
 import { RecommendationsPage } from './pages/RecommendationsPage';
 import { TeamPage } from './pages/TeamPage';
+import { ArtefactsPage } from './pages/ArtefactsPage';
 import { ReferencesPage } from './pages/ReferencesPage';
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
       'costs',
       'implementation',
       'recommendations',
+      'artefacts',
       'team',
       'references',
     ];
@@ -87,6 +89,8 @@ export default function App() {
         return <ImplementationPage onNavigate={handleNavigate} />;
       case 'recommendations':
         return <RecommendationsPage onNavigate={handleNavigate} />;
+      case 'artefacts':
+        return <ArtefactsPage onNavigate={handleNavigate} />;
       case 'team':
         return <TeamPage onNavigate={handleNavigate} />;
       case 'references':

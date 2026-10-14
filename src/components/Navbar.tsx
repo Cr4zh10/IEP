@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
 
           {/* Quick status badge / Menu trigger */}
           <div className="flex items-center gap-2">
-            <span className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#065A82] text-cyan-100 border border-[#1C7293]/50">
+            <span className="hidden 2xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#065A82] text-cyan-100 border border-[#1C7293]/50">
               <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
               Design Area 6.2: Water Quality & Treatment
             </span>
@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-200 hover:text-white hover:bg-[#065A82] focus:outline-none focus:ring-2 focus:ring-[#1C7293]"
+              className="2xl:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-200 hover:text-white hover:bg-[#065A82] focus:outline-none focus:ring-2 focus:ring-[#1C7293]"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
@@ -64,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
       </div>
 
       {/* Desktop Horizontal Navigation (Scrollable list with clean indicators) */}
-      <div className="hidden xl:block bg-[#065A82] border-t border-[#1C7293]/40">
+      <div className="hidden 2xl:block bg-[#065A82] border-t border-[#1C7293]/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center space-x-1 overflow-x-auto py-1 scrollbar-thin scrollbar-thumb-slate-400">
             {PAGES.map((page) => {
@@ -98,10 +98,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
 
       {/* Mobile / Tablet Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-[#21295C] border-t border-[#1C7293]/40 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="2xl:hidden bg-[#21295C] border-t border-[#1C7293]/40 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="p-3 bg-[#065A82]/50 border-b border-[#1C7293]/30 flex items-center justify-between text-xs text-slate-300">
             <span className="flex items-center gap-1 font-medium">
-              <Layers size={14} className="text-cyan-300" /> All Project Sections (12 Pages)
+              <Layers size={14} className="text-cyan-300" /> All Project Sections (13 Pages)
             </span>
             <span>Current: {activePage?.number}. {activePage?.shortTitle}</span>
           </div>

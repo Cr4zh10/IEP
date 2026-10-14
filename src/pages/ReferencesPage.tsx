@@ -40,6 +40,17 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
 
   const references: ReferenceEntry[] = [
     {
+      id: 'ato-2025',
+      authors: 'Australian Taxation Office',
+      year: '2025',
+      title: 'Taxation determination TD 2025/4: Income tax: Reasonable travel and overtime meal allowance expense amounts for the 2025–26 income year',
+      isStandaloneTitle: true,
+      sourceInfo: '',
+      url: 'https://www.ato.gov.au/law/view/pdf/pbr/td2025-004.pdf',
+      fullCitationText:
+        'Australian Taxation Office. (2025). Taxation determination TD 2025/4: Income tax: Reasonable travel and overtime meal allowance expense amounts for the 2025–26 income year. https://www.ato.gov.au/law/view/pdf/pbr/td2025-004.pdf',
+    },
+    {
       id: 'awa-2018',
       authors: 'Australian Water Association',
       year: '2018, May 22',
@@ -60,6 +71,17 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
       url: 'https://bestratedtransport.com.au/blog/sending-freight-to-remote-queensland-a-practical-guide',
       fullCitationText:
         'Best Rated Transport. (2026). Sending freight to remote Queensland: A practical guide. https://bestratedtransport.com.au/blog/sending-freight-to-remote-queensland-a-practical-guide',
+    },
+    {
+      id: 'bom-2026',
+      authors: 'Bureau of Meteorology',
+      year: '2026',
+      title: 'Climate statistics for Australian locations: Lockhart River Airport (site 028008)',
+      isStandaloneTitle: true,
+      sourceInfo: '',
+      url: 'https://www.bom.gov.au/climate/averages/tables/cw_028008.shtml',
+      fullCitationText:
+        'Bureau of Meteorology. (2026). Climate statistics for Australian locations: Lockhart River Airport (site 028008). https://www.bom.gov.au/climate/averages/tables/cw_028008.shtml',
     },
     {
       id: 'clark-tanks-2025',
@@ -166,6 +188,17 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
         'Mazzei Injector Company. (n.d.). Performance data and drawings: Venturi injectors. https://mazzei.net/support/performance-data-drawings/',
     },
     {
+      id: 'modis-2007',
+      authors: 'MODIS Rapid Response Team',
+      year: '2007',
+      title: 'River plumes threaten Great Barrier Reef',
+      isStandaloneTitle: true,
+      sourceInfo: '[Satellite image]. NASA Earth Observatory.',
+      url: 'https://science.nasa.gov/earth/earth-observatory/river-plumes-threaten-great-barrier-reef-7537/',
+      fullCitationText:
+        'MODIS Rapid Response Team. (2007, March 29). River plumes threaten Great Barrier Reef [Satellite image]. NASA Earth Observatory. https://science.nasa.gov/earth/earth-observatory/river-plumes-threaten-great-barrier-reef-7537/',
+    },
+    {
       id: 'nhmrc-2025a',
       authors: 'National Health and Medical Research Council',
       year: '2025a',
@@ -199,6 +232,17 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
         'National Indigenous Times. (2024, October 16). Safe, reliable drinking water coming to remote Queensland communities. https://nit.com.au/16-10-2024/14297/safe-reliable-drinking-water-coming-to-remote-queensland-communities',
     },
     {
+      id: 'nwga-nd',
+      authors: 'National Water Grid Authority',
+      year: 'n.d.',
+      title: 'First Nations water',
+      isStandaloneTitle: true,
+      sourceInfo: '',
+      url: 'https://www.nationalwatergrid.gov.au/node/156',
+      fullCitationText:
+        'National Water Grid Authority. (n.d.). First Nations water. https://www.nationalwatergrid.gov.au/node/156',
+    },
+    {
       id: 'nwga-2023',
       authors: 'National Water Grid Authority',
       year: '2023, February 13',
@@ -208,6 +252,17 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
       url: 'https://nationalwatergrid.gov.au/node/155',
       fullCitationText:
         'National Water Grid Authority. (2023, February 13). Closing the Gap: $150 million towards First Nations water security. https://nationalwatergrid.gov.au/node/155',
+    },
+    {
+      id: 'nrma-2018',
+      authors: 'NRMA',
+      year: '2018, April 20',
+      title: 'Cairns to Cape York',
+      isStandaloneTitle: true,
+      sourceInfo: '',
+      url: 'https://www.mynrma.com.au/open-road/road-trips/cairns-to-cape-york',
+      fullCitationText:
+        'NRMA. (2018, April 20). Cairns to Cape York. https://www.mynrma.com.au/open-road/road-trips/cairns-to-cape-york',
     },
     {
       id: 'openai-2026',
@@ -465,6 +520,41 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
             )}
           </div>
         </div>
+      </section>
+
+
+      <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-3">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Abbreviations used on this site</h2>
+        <p className="text-sm text-slate-600">
+          Each abbreviation is written out in full the first time it appears, and used in short form after that. The
+          reference list above always uses full names.
+        </p>
+        <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-sm text-slate-700">
+          {[
+            ['ADWG', 'Australian Drinking Water Guidelines'],
+            ['ATO', 'Australian Taxation Office'],
+            ['AWA', 'Australian Water Association'],
+            ['BOM', 'Bureau of Meteorology'],
+            ['CFD', 'computational fluid dynamics'],
+            ['CfAT', 'Centre for Appropriate Technology'],
+            ['CSIRO', 'Commonwealth Scientific and Industrial Research Organisation'],
+            ['EWB', 'Engineers Without Borders Australia'],
+            ['LLLT', 'Lama Lama Land Trust'],
+            ['MODIS', 'Moderate Resolution Imaging Spectroradiometer'],
+            ['NHMRC', 'National Health and Medical Research Council'],
+            ['NWGA', 'National Water Grid Authority'],
+            ['P&ID', 'piping and instrumentation diagram'],
+            ['PESTLE', 'Political, Economic, Social, Technological, Legal and Environmental'],
+            ['QRA', 'Queensland Reconstruction Authority'],
+            ['TRIZ', 'Theory of Inventive Problem Solving'],
+            ['YAC', 'Yintjingga Aboriginal Corporation'],
+          ].map(([a, b]) => (
+            <div key={a} className="flex gap-3">
+              <dt className="font-semibold text-[#21295C] w-16 shrink-0">{a}</dt>
+              <dd>{b}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <PagePagination currentPageId="references" onNavigate={onNavigate} />

@@ -9,6 +9,7 @@ export type PageId =
   | 'costs'
   | 'implementation'
   | 'recommendations'
+  | 'artefacts'
   | 'team'
   | 'references';
 
@@ -26,83 +27,90 @@ export const PAGES: PageInfo[] = [
     title: 'Home',
     shortTitle: 'Home',
     number: 1,
-    description: 'Project overview, key metrics, and quick navigation.',
+    description: 'Project summary, why it matters, and where to find things.',
   },
   {
     id: 'context',
     title: 'Context: About Lama Lama',
     shortTitle: 'Context',
     number: 2,
-    description: 'Geography, climate, Stewart River water, and engineering history.',
+    description: 'Place, climate, water supply history, and the outside factors that shape the design.',
   },
   {
     id: 'empathise',
     title: 'Empathise: Research & Journey Map',
     shortTitle: 'Empathise',
     number: 3,
-    description: 'Desktop research findings and operator Geoff’s journey map.',
+    description: 'Research findings, rainbow diagram and Geoff’s journey map.',
   },
   {
     id: 'define',
     title: 'Define: User Needs & Requirements',
     shortTitle: 'Define',
     number: 4,
-    description: 'Problem statement, core user needs, and engineering criteria.',
+    description: 'Problem, design goal, user needs and design requirements.',
   },
   {
     id: 'ideate',
     title: 'Ideate & Screen',
     shortTitle: 'Ideate',
     number: 5,
-    description: 'Concept evaluation, decision matrix, and winning design.',
+    description: 'Where the four concepts came from, how we compared them, and why we chose one.',
   },
   {
     id: 'prototype',
     title: 'Prototype: Treatment System Flow',
     shortTitle: 'Prototype',
     number: 6,
-    description: 'Step-by-step treatment schematic and component descriptions.',
+    description: 'What our prototype is, and which requirements it tests.',
   },
   {
     id: 'test-results',
     title: 'Test & Results',
     shortTitle: 'Test & Results',
     number: 7,
-    description: 'Venturi aeration fluid simulation and iron removal benchmarking.',
+    description: 'Venturi simulation and comparison with real treatment plants.',
   },
   {
     id: 'costs',
     title: 'Costs & Budget',
     shortTitle: 'Costs',
     number: 8,
-    description: 'Capital cost estimates, reused infrastructure savings, and funding.',
+    description: 'Cost breakdown, labour and travel detail, and funding sources.',
   },
   {
     id: 'implementation',
     title: 'Implementation & Considerations',
     shortTitle: 'Implementation',
     number: 9,
-    description: 'Community partnership, four-step timeline, and site constraints.',
+    description: 'Gantt chart, weather, community partnership and the journey after installation.',
   },
   {
     id: 'recommendations',
     title: 'Recommendations',
     shortTitle: 'Recommendations',
     number: 10,
-    description: 'Actionable design advice and future storage capacity guidance.',
+    description: 'What we recommend, and what still needs to be checked.',
+  },
+  {
+    id: 'artefacts',
+    title: 'Artefacts: What We Made and Why',
+    shortTitle: 'Artefacts',
+    number: 11,
+    description: 'Every artefact we produced, why we made it and what it shows.',
   },
   {
     id: 'team',
     title: 'Team',
     shortTitle: 'Team',
-    number: 11,
-    description: 'Student engineer profiles and editable individual contributions.',
+    number: 12,
+    description: 'Who worked on which sections.',
   },
   {
     id: 'references',
     title: 'References',
     shortTitle: 'References',
-    number: 12,
-    description: 'Complete APA 7th bibliographic references with source links.',
+    number: 13,
+    description: 'APA 7th reference list with links, and a list of abbreviations.',
   },
 ];

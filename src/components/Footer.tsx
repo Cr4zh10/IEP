@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Stewart River Iron-Removal System
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed mb-3">
-              Design Area 6.2: Water Quality and Treatment. Developed for the Engineers Without Borders (EWB) Challenge in partnership with the Lama Lama community at Port Stewart, Cape York, Queensland.
+              Design Area 6.2: Water Quality and Treatment. A university engineering design project for the Engineers Without Borders Challenge, about water supply at Port Stewart on Lama Lama Country, Cape York, Queensland.
             </p>
             <div className="text-xs text-cyan-300 font-mono">
               University Engineering Design Project · 2026
@@ -67,10 +67,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           <div>
             <h4 className="text-white font-bold text-sm mb-2 flex items-center gap-1.5">
-              <FileText size={16} className="text-cyan-300" /> Academic & Report Standards
+              <FileText size={16} className="text-cyan-300" /> Sources
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed mb-3">
-              Written in simple, clear English with short sentences and accessible explanations. All factual claims are grounded in peer-reviewed literature, official guidelines (ADWG), and EWB project documentation.
+              Sources are cited in APA 7th style on each page. Where a number is our own estimate or assumption, the page says so.
             </p>
             <button
               type="button"
@@ -86,14 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div>
-            © 2026 Stewart River Water Engineering Team · EWB Challenge
-          </div>
-          <div className="flex items-center gap-4">
-            <span>Writing Style: Simple, Plain English</span>
-            <span>·</span>
-            <span>Off-grid Appropriate</span>
-          </div>
+          <div>© 2026 Ethan Illidge, Huy Truong, Natalia Tran and Tan Dong</div>
         </div>
       </div>
     </footer>
