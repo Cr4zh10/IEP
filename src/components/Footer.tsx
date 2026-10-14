@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Stewart River Iron-Removal System
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed mb-3">
-              Design Area 6.2: Water Quality and Treatment. A university engineering design project for the Engineers Without Borders Challenge, about water supply at Port Stewart on Lama Lama Country, Cape York, Queensland.
+              Design Area 6.2: Drinking Water Quality and Treatment. A university engineering design project for the Engineers Without Borders Challenge, about water supply at Port Stewart on Lama Lama Country, Cape York, Queensland.
             </p>
             <div className="text-xs text-cyan-300 font-mono">
               University Engineering Design Project · 2026

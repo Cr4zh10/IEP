@@ -21,7 +21,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <section className="rounded-3xl bg-gradient-to-br from-[#21295C] via-[#065A82] to-[#1C7293] text-white p-8 sm:p-12 shadow-xl">
         <div className="max-w-4xl space-y-5">
           <p className="text-sm font-medium text-cyan-200">
-            Engineers Without Borders Challenge 2026 · Design Area 6.2 Water quality and treatment
+            Engineers Without Borders Challenge 2026 · Design Area 6.2 Drinking water quality and treatment
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
             Stewart River Iron-Removal System

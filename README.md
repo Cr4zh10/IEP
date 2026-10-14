@@ -1,6 +1,6 @@
 # Stewart River Iron-Removal System
 
-EWB Challenge 2026 – Design Area 6.2 Water quality and treatment – Port Stewart, Lama Lama Country.
+EWB Challenge 2026 – Design Area 6.2 Drinking water quality and treatment – Port Stewart, Lama Lama Country.
 
 ## Where things are
 - Each page is one file in `src/pages/` (for example `CostsPage.tsx`).

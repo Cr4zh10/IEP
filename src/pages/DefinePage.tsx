@@ -113,7 +113,7 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
         </p>
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C] pt-2">Project design goal</h2>
         <p className="text-slate-700 leading-relaxed">
-          Our project is Design Area 6.2, Water quality and treatment, of the EWB Challenge (EWB, 2026). Our design
+          Our project is Design Area 6.2, Drinking water quality and treatment, of the EWB Challenge (EWB, 2026). Our design
           goal is to create a low-maintenance iron treatment system that improves water quality and avoids the
           maintenance failures of earlier systems.
         </p>
