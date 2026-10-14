@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div>© 2026 Ethan Illidge, Huy Truong, Natalia Tran and Tan Dong</div>
+          <div>Written and built by Ethan Illidge, Huy Truong, Natalia Tran and Tan Dong, 2026. Figures and data credited to other sources belong to those sources.</div>
         </div>
       </div>
     </footer>

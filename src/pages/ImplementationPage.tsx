@@ -3,7 +3,6 @@ import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
 import { ArtefactNote } from '../components/ArtefactNote';
-import { DraftBadge } from '../components/DraftBadge';
 import { MONTHS } from '../data/rainfall';
 
 interface ImplementationPageProps {
@@ -25,12 +24,13 @@ interface Task {
 /**
  * PAGE 9: IMPLEMENTATION
  * The Gantt chart assumes the project starts in January. Change start/end below to move the bars.
+ * No new abbreviations are written out here. YAC, EWB, BOM, QRA and TMR are already defined.
  */
 const TASKS: Task[] = [
   { name: 'Agree the plan with YAC, Rangers and Elders', who: 'Team, YAC', start: 0, end: 11, color: 'bg-violet-500', note: 'Runs all year' },
   { name: 'Apply for funding', who: 'Team, EWB, YAC', start: 0, end: 3, color: 'bg-sky-600' },
   { name: 'Get supplier quotes and confirm the budget', who: 'Team', start: 2, end: 4, color: 'bg-sky-600' },
-  { name: 'Dry-season site visit and heritage clearance', who: 'Engineer, YAC', start: 5, end: 5, color: 'bg-amber-600', note: 'Check pump, intake and slab site' },
+  { name: 'Dry-season site visit and cultural heritage check', who: 'Engineer, YAC', start: 5, end: 5, color: 'bg-amber-600', note: 'Check pump, intake and slab site' },
   { name: 'Buy materials and send to Cairns', who: 'Team', start: 5, end: 5, color: 'bg-emerald-600', note: 'After the site visit confirms the design' },
   { name: 'Freight to Port Stewart', who: 'Freight company', start: 6, end: 6, color: 'bg-emerald-600' },
   { name: 'Slab, installation and pressure test', who: 'Plumber, engineer', start: 7, end: 7, color: 'bg-rose-600', note: '6 days on site' },
@@ -55,7 +55,7 @@ export const ImplementationPage: React.FC<ImplementationPageProps> = ({ onNaviga
       cells: [
         'Taps run from the header tanks and fewer people complain about stained basins and laundry.',
         'Backwashes the filters by opening valves, checks the gauges and uses spare parts from the storage chest.',
-        'Tests the treated water with the colour test kit and records the result. Rangers share results.',
+        'Tests the treated water with the iron test kit and records the result. Rangers share results.',
       ],
     },
     {
@@ -85,17 +85,17 @@ export const ImplementationPage: React.FC<ImplementationPageProps> = ({ onNaviga
     {
       n: '2',
       title: 'Build for storms',
-      text: 'A concrete slab above flood level, tie-downs and corrosion-resistant fittings, following Queensland guidance (QRA, 2019).',
+      text: 'A concrete slab above flood level, tie-downs and corrosion-resistant fittings, using Queensland cyclone guidance for homes as a guide (QRA, 2019). An engineer would check the final design.',
     },
     {
       n: '3',
       title: 'Deliver in the dry season',
-      text: 'Buy everything in Cairns or Townsville and send it in the dry months, when the roads are open (Best Rated Transport, 2026; RDA Tropical North, 2023).',
+      text: 'Have the parts delivered to Cairns first, then send them north in the dry months. In the wet season freight can take two to five business days longer, and when roads close carriers may switch to barge or air freight (Best Rated Transport, 2026). Road closures can last up to five months a year (TMR, 2023).',
     },
     {
       n: '4',
       title: 'Train the local operators',
-      text: 'Hands-on training with Geoff, the Rangers and operators on backwashing and test kits. Leave a quick guide and a box of spare parts on site (EWB, 2026).',
+      text: 'Hands-on training for the Rangers and local operators on backwashing and the test kits. Leave a quick guide and a box of spare parts on site. Training for the rainwater system is already planned (EWB, 2025), so ours could be run alongside it.',
     },
   ];
 
@@ -109,12 +109,13 @@ export const ImplementationPage: React.FC<ImplementationPageProps> = ({ onNaviga
       />
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-3">
-        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">First: work with the community</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Working with the community first</h2>
         <p className="text-slate-700 leading-relaxed">
           This is Lama Lama Country, so we do not start building until we have agreed each step with YAC, the Lama
-          Lama Rangers and Elders (YAC, n.d.-a). Any digging, slab pouring or trenching needs cultural heritage
-          clearance first. The Aboriginal Cultural Heritage Act 2003 (Qld) places a duty of care on anyone working on
-          the land (Queensland Government, 2003).
+          Lama Rangers and the Elders (YAC, n.d.-b). Any digging, slab pouring or trenching has to follow the cultural
+          heritage duty of care in the <em>Aboriginal Cultural Heritage Act 2003</em> (Qld) s 23, which requires anyone
+          carrying out an activity to take reasonable and practicable measures to avoid harming Aboriginal cultural
+          heritage.
         </p>
       </section>
 
@@ -167,20 +168,23 @@ export const ImplementationPage: React.FC<ImplementationPageProps> = ({ onNaviga
               ))}
             </div>
           </div>
-          <div className="flex flex-wrap gap-4 mt-2 text-xs text-slate-600">
+          <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-slate-600">
             <span className="inline-flex items-center gap-1.5">
               <span className="w-3 h-3 bg-sky-100 border border-sky-200" /> Wet season (December to April)
             </span>
-            <span>Blue = funding and planning · green = buying and freight · red = building · teal = monitoring</span>
+            <span>
+              Violet = community agreement · blue = funding and quotes · amber = site visit · green = buying and freight ·
+              red = building and training · teal = monitoring and review
+            </span>
           </div>
           <figcaption className="mt-2 text-xs text-slate-600 leading-relaxed text-left">
-            <span className="italic font-semibold">Note.</span> Wet season shading is based on mean monthly rainfall at
-            Lockhart River Airport (BOM, 2026), used as a regional guide. The start month is our assumption. If funding
-            arrives late, the dry-season tasks move to the next dry season, not into the wet season.
+            Created by the project team. Wet season shading is based on mean monthly rainfall at Lockhart River Airport
+            (BOM, 2026), used as a regional guide. The start month is our assumption. If funding arrives late, the
+            dry-season tasks move to the next dry season, not into the wet season.
           </figcaption>
         </figure>
         <ArtefactNote
-          why="To show when each step happens, who is involved, and how the wet and dry seasons shape the order of the work."
+          why="The order of the work depends on the seasons, so the chart shows when each step happens and who is involved."
           tells="Funding and ordering must be finished by about June. If they are not, the project loses the dry season and waits another year."
         />
 
@@ -188,30 +192,33 @@ export const ImplementationPage: React.FC<ImplementationPageProps> = ({ onNaviga
           <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
             <h3 className="font-bold text-[#21295C] mb-1">When do we get the money?</h3>
             <p>
-              Applications and quotes happen from January to April. Funding needs to be confirmed before materials are
-              ordered in June, after the site visit. We have not confirmed how long a grant decision takes, so this needs to be checked with
-              the funder.
+              Funding applications run from January to April and supplier quotes from March to May. Funding needs to be
+              confirmed before materials are ordered in June, after the site visit. How long a grant decision takes
+              depends on the funder, and we do not have a figure.
             </p>
           </div>
           <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
             <h3 className="font-bold text-[#21295C] mb-1">When does the labour come in?</h3>
             <p>
-              The plumber and engineer travel in August and work for about six days. Training happens at the end of that
-              visit, so the operators learn on the finished unit.
+              The plumber and engineer travel in August. The plumber works on site for about six days and the engineer for
+              four. Training happens at the end of the visit, so the operators learn on the finished unit.
             </p>
           </div>
           <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
             <h3 className="font-bold text-[#21295C] mb-1">What if the weather turns?</h3>
             <p>
-              Storms and flooded creeks can stop freight or hold the crew on site. That is why the budget has a 20–25%
-              contingency and the plan leaves a gap between delivery and the end of the dry season.
+              If the wet season starts early or a road closes, freight can be delayed (Best Rated Transport, 2026), and
+              the crew might have to stay longer. That is one reason for the 20–25% contingency, and the plan leaves a
+              few months between installation in August and the start of the wet season.
             </p>
           </div>
           <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
             <h3 className="font-bold text-[#21295C] mb-1">What about the pump in the dry season?</h3>
             <p>
-              The site visit in June checks the pump and the intake. If the river level is too low to supply the unit,
-              the project waits for EWB and Arup's new intake (EWB, n.d.).
+              The site visit in June checks the pump and the intake. In each dry season the river level can fall below the
+              sand in the riverbed (EWB, n.d.). If the level is too low to supply the unit, the project would wait for the
+              new intake that Arup designed, whose construction funding was still being sought on EWB's project page
+              (EWB, n.d.).
             </p>
           </div>
         </div>
@@ -234,11 +241,12 @@ export const ImplementationPage: React.FC<ImplementationPageProps> = ({ onNaviga
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">
-          After installation: Geoff's journey map<DraftBadge />
+          After installation: Geoff's journey map
         </h2>
         <p className="text-slate-700 leading-relaxed">
-          This is the same journey map as on the Empathise page, redrawn for after the system is installed. It is what
-          we expect to happen, not something we have measured. We also list what could still go wrong.
+          Geoff is the persona from the Empathise page. This is his journey map redrawn for after the system is
+          installed. It is what we expect to happen, not something we have measured. We also list what could still go
+          wrong.
         </p>
         <div className="text-left">
           <div className="font-bold text-sm text-[#21295C]">Table 11</div>
@@ -266,8 +274,12 @@ export const ImplementationPage: React.FC<ImplementationPageProps> = ({ onNaviga
             </tbody>
           </table>
         </div>
+        <p className="text-xs text-slate-600 leading-relaxed">
+          Created by the project team. The persona and the expected events come from our desktop research and design
+          choices, not from interviews.
+        </p>
         <ArtefactNote
-          why="To check that the design really improves Geoff's day, and to look for new problems the system might cause."
+          why="We wanted to test whether the design improves Geoff's day, and to look for problems the system might create."
           tells="Most of the improvement depends on training and spare parts, not only on the equipment. The biggest risks left are the dry-season river level and losing the trained operator."
         />
       </section>

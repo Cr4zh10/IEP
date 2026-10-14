@@ -18,27 +18,27 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
     {
       n: '1',
       title: 'Safe, acceptable drinking water',
-      text: 'Less iron, so less metallic taste and less red staining, and a result at or below the ADWG guideline of 0.30 mg/L (NHMRC, 2025a).',
+      text: 'Less iron, so less metallic taste and less rust-coloured staining, and a result at or below the ADWG guideline of 0.3 mg/L (NHMRC, 1996).',
     },
     {
       n: '2',
       title: 'Simple maintenance',
-      text: 'Cleaning must not need specialist technicians, delicate cartridges or chemical mixing (EWB, 2026).',
+      text: 'Cleaning must not need specialist technicians, delicate cartridges or chemical mixing.',
     },
     {
       n: '3',
       title: 'Reliable performance',
-      text: 'The unit should keep treating whatever water the intake delivers, without the filter blocking and shutting down (EWB, 2026).',
+      text: 'The unit should keep treating whatever water the intake delivers, without the filter blocking and shutting down.',
     },
     {
       n: '4',
       title: 'Reuse what is already there',
-      text: 'Use the existing pump, pipes and header tanks where they work, to avoid cost and waste (EWB, 2026).',
+      text: 'Use the existing pump, pipes and elevated header tanks where they work, to save cost and waste (EWB, n.d.).',
     },
     {
       n: '5',
       title: 'Suits a remote community',
-      text: 'It has to survive humidity, salt air, wet seasons and cyclone winds (Queensland Reconstruction Authority [QRA], 2019), and it has to work with the skills available locally.',
+      text: 'It has to survive wet seasons, cyclone winds and corrosion near the coast (Queensland Reconstruction Authority [QRA], 2019), and it has to work with the skills available locally.',
     },
   ];
 
@@ -47,14 +47,14 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
       id: 'REQ-01',
       req: 'Remove dissolved iron from the water the intake delivers',
       pri: 'High',
-      why: 'Meet 0.30 mg/L. From the highest reading of 1.25 mg/L, this means at least 76% removal (NHMRC, 2025a).',
+      why: 'Meet 0.3 mg/L. From the highest reading of 1.25 mg/L, this means at least 76% removal (NHMRC, 1996; Todio, 2026).',
       check: 'Compare with published treatment plants; test site water on arrival.',
     },
     {
       id: 'REQ-02',
       req: 'Include a simple cleaning (backwashing) system',
       pri: 'High',
-      why: 'Iron solids must be flushed out without replacing cartridges (EWB, 2026).',
+      why: 'Iron solids must be flushed out without replacing cartridges.',
       check: 'Check the design: operated by valves, no tools.',
     },
     {
@@ -75,7 +75,7 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
       id: 'REQ-05',
       req: 'Allow local operator training and maintenance',
       pri: 'High',
-      why: 'Rangers and operators should be able to run the unit themselves (EWB, 2026).',
+      why: 'Rangers and operators should be able to run the unit themselves.',
       check: 'Training session and quick guide at handover.',
     },
     {
@@ -89,7 +89,7 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
       id: 'REQ-07',
       req: 'Withstand wet season and cyclone conditions',
       pri: 'Medium',
-      why: 'Concrete slab and tie-downs, following QRA (2019) guidance.',
+      why: 'Concrete slab and tie-downs, using the QRA (2019) cyclone guidance for homes as a guide.',
       check: 'Check against QRA guidance; engineer sign-off.',
     },
   ];
@@ -106,16 +106,16 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Problem statement</h2>
         <p className="text-slate-700 leading-relaxed">
-          The design brief says that the Stewart River water supply has naturally high levels of dissolved iron, and
-          that earlier treatment systems stopped working because of iron fouling and hard maintenance. The new
-          solution has to improve water quality and also be practical, reliable and easy to maintain in a remote
-          community (EWB, 2026).
+          Water at Port Stewart has high levels of dissolved iron (EWB, 2019), and two bores measured 1.01 mg/L and
+          1.25 mg/L (Todio, 2026). An iron filter installed in 2018 is not in operation and has been bypassed for most
+          of the time since (Todio, 2026). The solution has to improve water quality and also be practical, reliable
+          and easy to maintain in a remote community.
         </p>
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C] pt-2">Project design goal</h2>
         <p className="text-slate-700 leading-relaxed">
-          Our project is Design Area 6.2, Drinking water quality and treatment, of the EWB Challenge (EWB, 2026). Our design
-          goal is to create a low-maintenance iron treatment system that improves water quality and avoids the
-          maintenance failures of earlier systems.
+          Our project is Design Area 6.2, Drinking water quality and treatment, of the EWB Challenge (EWB, 2026). Our
+          design goal is to create a low-maintenance iron treatment system that improves water quality and is easy
+          enough for the community to look after.
         </p>
       </section>
 
@@ -143,12 +143,12 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
         <p className="text-slate-800 leading-relaxed">
           One thing a treatment unit cannot do is make water appear. The pump can only deliver water when the river has
           water at the intake. EWB reports that each dry season, when the river falls below the bed sand, the
-          community digs an improvised pond in the riverbed to keep pumping (EWB, n.d.). So "water all year round" is
-          a supply problem, and our unit cannot solve it on its own.
+          community digs an improvised pond in the riverbed (EWB, n.d.). So "water all year round" is a supply
+          problem, and our unit cannot solve it on its own.
         </p>
         <p className="text-slate-800 leading-relaxed">
           For that reason our requirement is to treat all the water the intake delivers, and not to guarantee
-          year-round supply. We keep the design independent of one particular pump. EWB and Arup have planned a new
+          year-round supply. We keep the design independent of one particular pump. EWB and Arup have designed a new
           intake below the river bed sands with solar-powered submersible pumps (EWB, n.d.). Our unit is sized for
           33.3 L/min, so if the new intake delivers a similar flow, our unit could be connected to it as well.
         </p>
@@ -161,8 +161,8 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Design requirements</h2>
         <p className="text-slate-700 leading-relaxed">
-          Each requirement has a way of checking it. The Prototype and Test pages report which ones we were able to
-          check and which are still open.
+          Each requirement has a way of checking it. The Prototype and Test pages report which ones we could check with
+          a desktop test and which would need a built unit.
         </p>
         <div className="text-left">
           <div className="font-bold text-sm text-[#21295C]">Table 3</div>
@@ -200,13 +200,13 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
             </tbody>
           </table>
         </div>
-        <p className="text-xs text-slate-600">
-          <span className="italic font-semibold">Note.</span> Priorities set by the project team from the design brief
-          (EWB, 2026) and the ADWG iron guideline (NHMRC, 2025a).
+        <p className="text-xs text-slate-600 leading-relaxed">
+          Created by the project team. The priorities are the team's judgement. REQ-01 uses the ADWG iron guideline
+          (NHMRC, 1996).
         </p>
         <ArtefactNote
-          why="To turn the research into a short list we can test the design against, and to decide what matters most."
-          tells="The five high-priority requirements are about simple operation and iron removal. Structure and materials matter, but they come second to a system the community can run."
+          why="The research became a short list of requirements we can test against, with a priority on each."
+          tells="The five high-priority requirements are about iron removal and simple operation. Structure and materials matter, but they come second to a unit the community can run."
         />
       </section>
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { PageId, PAGES } from '../types';
 import { PagePagination } from '../components/PagePagination';
-import { Photo } from '../components/Photo';
 import { RANGE_TEXT } from '../data/costs';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 
@@ -11,8 +10,8 @@ interface HomePageProps {
 
 /**
  * PAGE 1: HOME
- * Abbreviations are defined here the first time they appear on the site
- * (EWB, NHMRC, ADWG). After this they are used in short form (APA 7).
+ * Abbreviations are written out here the first time they appear on the site
+ * (EWB, NHMRC, ADWG, TMR). After this they are used in short form (APA 7).
  */
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
@@ -34,10 +33,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <span className="text-cyan-300 font-bold block text-xs uppercase tracking-wider mb-1">
               Project summary
             </span>
-            This project is Design Area 6.2 of the Engineers Without Borders Australia (EWB) Challenge. The brief asks
-            for a way to improve the quality of the river water used by the Lama Lama community at Port Stewart
-            (EWB, 2026). Our answer is a low-maintenance iron treatment unit that connects to the pump and header tanks
-            the community already has.
+            This project is Design Area 6.2, Drinking water quality and treatment, of the Engineers Without Borders
+            Australia (EWB) Challenge (EWB, 2026). We designed a low-maintenance iron treatment unit for the Lama Lama
+            community at Port Stewart. It connects to the pump and tanks the community already has.
           </div>
 
           <div className="pt-1 flex flex-wrap items-center gap-3 text-sm text-cyan-100">
@@ -67,64 +65,56 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      <Photo
-        file="photo-home.jpg"
-        alt="A Lama Lama ranger smiling beside the Welcome to Lama Lama Country sign"
-        figureNumber="Figure H1"
-        title="A Lama Lama ranger at the Welcome to Lama Lama Country sign"
-        narrow
-        credit="[Team to complete before sharing: photographer and year; where the photo came from, with a web address if online; and who gave permission for it to be used.] The sign was made by the Yintjingga Aboriginal Corporation."
-      />
-
       {/* Why this project matters */}
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Why this project matters</h2>
         <p className="text-slate-700 leading-relaxed">
-          Port Stewart is a small, remote community on Lama Lama Country in Far North Queensland (EWB, 2026). It
-          depends on the Stewart River for most of its water. The rainwater tanks can supply drinking water, but not
-          enough for everything else the community needs each day (EWB, 2026).
+          Port Stewart is a small community on Lama Lama Country, in eastern Cape York Peninsula (Yintjingga
+          Aboriginal Corporation [YAC], n.d.-c). The Challenge forum asks teams to assume about 40 people use the water
+          (Todio, 2026). The community pumps its water from the Stewart River. Rainwater tanks can supply drinking
+          water, but not enough for the other things the community needs water for (EWB, 2026).
         </p>
         <p className="text-slate-700 leading-relaxed">
-          The original river intake was destroyed by a cyclone in 2006. Since then the community has used a diesel pump
-          to take water from the river (EWB, n.d.). The water has a lot of dissolved iron. Iron measured at two bores was 1.01 mg/L and 1.25 mg/L (EWB Challenge, n.d.). Iron stains basins and
-          laundry and gives water a metallic taste. The National Health and Medical Research Council (NHMRC) sets an
-          aesthetic guideline value of 0.30 mg/L in the Australian Drinking Water Guidelines (ADWG; NHMRC, 2025a).
-          Earlier treatment attempts at Port Stewart stopped working because iron blocked the filters, and they were
-          hard to maintain (EWB, 2026).
+          A cyclone destroyed the original river intake in 2006, and the community now uses a diesel pump to take water
+          from the river (EWB, n.d.). The water has a lot of dissolved iron (EWB, 2019). Two bores measured 1.01 mg/L
+          and 1.25 mg/L (Todio, 2026). Iron stains basins and laundry and gives water a metallic taste. The Australian
+          Drinking Water Guidelines (ADWG) set an aesthetic guideline value of 0.3 mg/L (National Health and Medical
+          Research Council [NHMRC], 1996). An iron filter installed in 2018 has been bypassed for most of the time since
+          (Todio, 2026).
         </p>
         <p className="text-slate-700 leading-relaxed">
-          So the problem is not only to remove iron. It is to remove iron in a way that the community can look after
-          without specialist technicians, because the nearest help is a long drive away on roads that can be cut off in
-          the wet season.
+          The unit also has to be something the community can look after without specialist technicians. The nearest
+          help is a long way off, and wet-season flooding can close roads in Cape York for up to five months a year
+          (Queensland Department of Transport and Main Roads [TMR], 2023).
         </p>
       </section>
 
       {/* Key numbers */}
       <section>
-        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C] mb-4">Three numbers to remember</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C] mb-4">Key numbers</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
             <div className="text-3xl font-black text-[#065A82]">76%</div>
             <h3 className="font-bold text-[#21295C] mt-1">Minimum iron removal</h3>
             <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-              The highest iron reading we have is 1.25 mg/L (EWB Challenge, n.d.). We need to get to 0.30 mg/L or less
-              (NHMRC, 2025a). That means removing at least 76%.
+              The highest iron reading we have is 1.25 mg/L, from a bore (Todio, 2026). The guideline value is 0.3 mg/L
+              (NHMRC, 1996). Going from 1.25 to 0.3 means removing at least 76%.
             </p>
           </div>
           <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
             <div className="text-3xl font-black text-[#065A82]">33.3 L/min</div>
             <h3 className="font-bold text-[#21295C] mt-1">Design flow</h3>
             <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-              The flow rate we used to size the unit and to run the Venturi simulation. It still needs to be checked
-              against the real pump on site.
+              The flow we chose to size the unit and to run the Venturi simulation. It is a design assumption, not a
+              measured pump flow.
             </p>
           </div>
           <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-            <div className="text-3xl font-black text-[#065A82]">{RANGE_TEXT}</div>
+            <div className="text-3xl font-black text-[#065A82]">{RANGE_TEXT.replace(' AUD', '')}</div>
             <h3 className="font-bold text-[#21295C] mt-1">Estimated cost</h3>
             <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-              Includes equipment, freight, labour, travel and a 20–25% contingency. These are our estimates and need
-              supplier quotes.
+              In Australian dollars (AUD), covering equipment, freight, labour, travel and a 20–25% contingency. Some
+              prices come from suppliers and the rest are our allowances, so the Costs page marks which is which.
             </p>
           </div>
         </div>
@@ -132,16 +122,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
       {/* How the design works, short */}
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-3">
-        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Our design in four lines</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">How the unit works</h2>
         <ol className="list-decimal pl-5 space-y-1.5 text-slate-700 leading-relaxed">
-          <li>The existing pump sends river water into our unit.</li>
-          <li>A Venturi aerator pulls in air, which turns dissolved iron into solid particles.</li>
-          <li>A 1,000 L tank lets the heavy particles settle out.</li>
-          <li>Two backwashable filters catch the rest, and clean water flows to the existing header tanks.</li>
+          <li>The existing pump sends river water into the unit.</li>
+          <li>
+            A Venturi aerator pulls in air. The oxygen turns dissolved iron into solid particles (SUEZ, n.d.).
+          </li>
+          <li>A 2,000 L tank gives the particles about an hour to settle.</li>
+          <li>Two backwashable filters catch what is left, and the treated water goes to the existing tanks.</li>
         </ol>
         <p className="text-sm text-slate-600">
-          The full reasoning is on the Ideate, Prototype and Test pages. The pump and water supply limits are on the
-          Define page.
+          The reasoning is on the Ideate, Prototype and Test pages. The limits of the pump and the water supply are on
+          the Define page.
         </p>
       </section>
 

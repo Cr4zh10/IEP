@@ -69,7 +69,7 @@ export const PAGES: PageInfo[] = [
     title: 'Test & Results',
     shortTitle: 'Test & Results',
     number: 7,
-    description: 'Venturi simulation and comparison with real treatment plants.',
+    description: 'Venturi simulation and comparison with published treatment plants.',
   },
   {
     id: 'costs',
@@ -90,7 +90,7 @@ export const PAGES: PageInfo[] = [
     title: 'Recommendations',
     shortTitle: 'Recommendations',
     number: 10,
-    description: 'What we recommend, and what still needs to be checked.',
+    description: 'What we recommend, and what should be checked before building.',
   },
   {
     id: 'artefacts',
