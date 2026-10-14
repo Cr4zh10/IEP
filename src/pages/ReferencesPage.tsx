@@ -16,6 +16,7 @@ interface ReferenceEntry {
   isStandaloneTitle: boolean; // Standalone work titles (books, reports, software) are italicised in APA 7
   sourceInfo: string;
   retrieved?: string;
+  publisher?: string; // shown after the title for standalone works
   journalItalic?: string;
   volumeItalic?: string;
   issue?: string;
@@ -82,6 +83,18 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
       url: 'https://www.bom.gov.au/climate/averages/tables/cw_028008.shtml',
       fullCitationText:
         'Bureau of Meteorology. (2026). Climate statistics for Australian locations: Lockhart River Airport (site 028008). https://www.bom.gov.au/climate/averages/tables/cw_028008.shtml',
+    },
+    {
+      id: 'chevalier-buckles-2008',
+      authors: 'Chevalier, J. M., & Buckles, D. J.',
+      year: '2008',
+      title: 'SAS²: A guide to collaborative inquiry and social engagement',
+      isStandaloneTitle: true,
+      sourceInfo: '',
+      publisher: 'International Development Research Centre',
+      url: 'https://idl-bnc-idrc.dspacedirect.org/handle/10625/35977',
+      fullCitationText:
+        'Chevalier, J. M., & Buckles, D. J. (2008). SAS²: A guide to collaborative inquiry and social engagement. International Development Research Centre. https://idl-bnc-idrc.dspacedirect.org/handle/10625/35977',
     },
     {
       id: 'clark-tanks-2025',
@@ -193,7 +206,8 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
       year: '2007',
       title: 'River plumes threaten Great Barrier Reef',
       isStandaloneTitle: true,
-      sourceInfo: '[Satellite image]. NASA Earth Observatory.',
+      sourceInfo: '[Satellite image]',
+      publisher: 'NASA Earth Observatory',
       url: 'https://science.nasa.gov/earth/earth-observatory/river-plumes-threaten-great-barrier-reef-7537/',
       fullCitationText:
         'MODIS Rapid Response Team. (2007, March 29). River plumes threaten Great Barrier Reef [Satellite image]. NASA Earth Observatory. https://science.nasa.gov/earth/earth-observatory/river-plumes-threaten-great-barrier-reef-7537/',
@@ -467,6 +481,7 @@ export const ReferencesPage: React.FC<ReferencesPageProps> = ({ onNavigate }) =>
                       <>
                         <span className="italic font-medium">{ref.title}</span>
                         {ref.sourceInfo && <span> {ref.sourceInfo}</span>}.{' '}
+                        {ref.publisher && <span>{ref.publisher}. </span>}
                         {ref.retrieved && <span>{ref.retrieved}, from{' '}</span>}
                       </>
                     ) : (

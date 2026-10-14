@@ -10,10 +10,12 @@ figure-4-velocity.png       Figure 8  Venturi velocity simulation
 figure-5-iron-removal.png   Figure 9  Iron-removal chart
 
 STILL NEEDED
-figure-3-rainbow.png        Figure 3  The team's rainbow diagram (Empathise page)
+(Figure 3, the rainbow diagram, is now drawn by the website itself. Edit src/data/stakeholders.ts to change it.)
 
 REAL PHOTOS (optional but strongly recommended, they only show if the file exists)
 photo-home.jpg              Home page. ADDED. The caption still needs the photographer, source and permission.
 photo-river.jpg             Context page. ADDED. NASA satellite image of Princess Charlotte Bay (credited).
 
 (The file names for figures keep their old numbers. The labels shown on the website are what count.)
+
+figure-3-rainbow.png is a copy of the diagram for slides and reports. The website itself draws Figure 3, so this file is not needed to run it.

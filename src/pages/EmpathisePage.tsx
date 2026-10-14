@@ -2,7 +2,9 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
-import { ImagePlaceholder } from '../components/ImagePlaceholder';
+import { RainbowDiagram } from '../components/RainbowDiagram';
+import { DraftBadge } from '../components/DraftBadge';
+import { STAKEHOLDERS } from '../data/stakeholders';
 import { ArtefactNote } from '../components/ArtefactNote';
 
 interface EmpathisePageProps {
@@ -99,21 +101,49 @@ export const EmpathisePage: React.FC<EmpathisePageProps> = ({ onNavigate }) => {
       </section>
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
-        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Rainbow diagram</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">
+          Stakeholder rainbow diagram
+          <DraftBadge />
+        </h2>
         <p className="text-slate-700 leading-relaxed">
-          We drew a rainbow diagram to organise what we learned from the research and to check that we had not
-          missed anything before moving on.
+          Before we wrote requirements we asked who this project touches. A rainbow diagram sorts stakeholders in two
+          ways at once (Chevalier & Buckles, 2008). The three sectors show how much influence a stakeholder has over
+          the project. The three rings show how much the project affects them, with the most affected in the centre.
+          We placed each stakeholder using what we found in our research.
         </p>
-        <ImagePlaceholder
-          figureNumber="Figure 3"
-          figureTitle="Rainbow Diagram for Water Treatment at Port Stewart"
-          imageFile="figure-3-rainbow.png"
-          noteText="Produced by the project team in class. Add the team's own diagram as public/images/figure-3-rainbow.png."
-          altText="Rainbow diagram produced by the project team"
-        />
+        <div className="text-left">
+          <div className="font-bold text-sm text-[#21295C]">Figure 3</div>
+          <div className="italic text-sm text-slate-800 font-medium">
+            Stakeholder Rainbow Diagram for Water Treatment at Port Stewart
+          </div>
+        </div>
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-5 overflow-x-auto">
+          <div className="min-w-[620px]">
+            <RainbowDiagram />
+          </div>
+        </div>
+        <div className="text-sm text-slate-700">
+          <div className="font-bold text-[#21295C] mb-2">Key to Figure 3</div>
+          <ol className="space-y-2">
+            {STAKEHOLDERS.map((st) => (
+              <li key={st.n} className="flex gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#21295C] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  {st.n}
+                </span>
+                <span className="leading-relaxed">
+                  <span className="font-semibold text-[#21295C]">{st.name}.</span> {st.why}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <p className="text-xs text-slate-600">
+          <span className="italic font-semibold">Note.</span> Diagram format from Chevalier and Buckles (2008).
+          Placement of each stakeholder was decided by the project team from the sources shown.
+        </p>
         <ArtefactNote
-          why="To organise the research findings in the way we learned in class, so that the design requirements come from evidence."
-          tells="Team to complete: say in one sentence what the diagram showed, for example which groups or needs it linked together."
+          why="To check who this project affects and who can decide its future before we wrote the design requirements, so that we did not design only for the engineers."
+          tells="The people who are most affected (Elders, the Yintjingga Aboriginal Corporation, the Rangers, Geoff and residents) are also the ones whose agreement is needed or who will run the unit. Funders and EWB have influence but are hardly affected by water quality. So the design has to be simple to run, the community must agree to it first, and the Rangers and Geoff need training."
         />
       </section>
 
