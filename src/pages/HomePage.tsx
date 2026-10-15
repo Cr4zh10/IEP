@@ -10,11 +10,28 @@ interface HomePageProps {
 
 const img = (file: string) => `${import.meta.env.BASE_URL}images/${file}`;
 
+/**
+ * How the key words in the summary are picked out. Change HIGHLIGHT to change the look:
+ *   'underline'  bold words with a thick gold underline (the one we use)
+ *   'band'       bold words with a soft yellow band under them
+ *   'bold'       bold blue words, no line
+ *   'box'        the first design: a yellow box around the words
+ * A plain thin underline is not offered, because it looks like a link.
+ */
+type HighlightStyle = 'underline' | 'band' | 'bold' | 'box';
+const HIGHLIGHT: HighlightStyle = 'underline';
+
+const HIGHLIGHT_CLASSES: Record<HighlightStyle, string> = {
+  underline:
+    'bg-transparent text-[#21295C] font-extrabold underline decoration-amber-500 [text-decoration-thickness:0.14em] [text-underline-offset:0.22em] [text-decoration-skip-ink:none]',
+  band: 'bg-transparent text-[#21295C] font-bold px-px [background:linear-gradient(to_top,#fde68a_40%,transparent_40%)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]',
+  bold: 'bg-transparent text-[#1C7293] font-extrabold',
+  box: 'bg-amber-200 text-[#21295C] rounded px-1.5 py-0.5 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]',
+};
+
 /** A word or phrase picked out in the summary so the eye lands on it first. */
 const Mark: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <mark className="bg-amber-200 text-[#21295C] rounded px-1.5 py-0.5 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
-    {children}
-  </mark>
+  <mark className={HIGHLIGHT_CLASSES[HIGHLIGHT]}>{children}</mark>
 );
 
 /**
