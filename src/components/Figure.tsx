@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { ArtefactLabel } from './ArtefactLabel';
 
 interface FigureProps {
   /** File name inside public/images/, for example "figure-1-map.png". */
   file: string;
   alt: string;
-  /** Label above the image, for example "Figure 1". */
+  /** Label above the image, for example "Figure 1". It also sets the anchor id (figure-1). */
   number: string;
   /** Title in Title Case, shown in italics under the label (APA 7). */
   title: string;
-  /** Credit line under the image. APA 7 style, for example "From ..., by ..., 2007, NASA (URL)." */
+  /** Credit line under the image. APA 7 style, for example "From ..., by ..., 2007 (URL)." One source only. */
   credit: React.ReactNode;
   /** Smaller and uncropped, good for portraits and low-resolution images. */
   narrow?: boolean;
@@ -25,15 +26,12 @@ export const Figure: React.FC<FigureProps> = ({ file, alt, number, title, credit
   if (failed) return null;
   return (
     <figure className={`my-6 w-full ${narrow ? 'max-w-xl' : ''}`}>
-      <div className="mb-2 text-left">
-        <div className="font-bold text-sm text-[#21295C]">{number}</div>
-        <div className="italic text-sm text-slate-800 font-medium">{title}</div>
-      </div>
+      <ArtefactLabel label={number} title={title} className="mb-2" />
       <img
         src={`${import.meta.env.BASE_URL}images/${file}`}
         alt={alt}
         className={`w-full rounded-xl border border-slate-200 bg-white ${
-          crop ? 'max-h-[460px] object-cover' : 'h-auto max-h-[600px] object-contain'
+          crop ? 'max-h-[460px] object-cover' : 'h-auto max-h-[640px] object-contain'
         }`}
         onError={() => setFailed(true)}
       />

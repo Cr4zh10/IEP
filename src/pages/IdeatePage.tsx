@@ -2,7 +2,9 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
+import { ScrollHint } from '../components/ScrollHint';
 import { ArtefactNote } from '../components/ArtefactNote';
+import { ArtefactLabel } from '../components/ArtefactLabel';
 
 interface IdeatePageProps {
   onNavigate: (pageId: PageId) => void;
@@ -111,10 +113,7 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
         </p>
 
         <figure className="w-full">
-          <div className="mb-2 text-left">
-            <div className="font-bold text-sm text-[#21295C]">Figure 4</div>
-            <div className="italic text-sm text-slate-800 font-medium">Feasibility and Innovation of the Four Concepts</div>
-          </div>
+          <ArtefactLabel label="Figure 4" title="Feasibility and Innovation of the Four Concepts" className="mb-2" />
           <div className="rounded-xl border border-slate-200 bg-white p-3">
             <svg viewBox="0 0 520 380" className="w-full max-w-2xl mx-auto h-auto" role="img" aria-label="Chart of feasibility against innovation for the four concepts">
               <rect x="50" y="10" width="460" height="320" fill="#F8FAFC" stroke="#CBD5E1" />
@@ -158,10 +157,8 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
           used TRIZ principles (Mistakeproofing Architecture Engineering and Construction, n.d.) to look for ways
           around them.
         </p>
-        <div className="text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 4</div>
-          <div className="italic text-sm text-slate-800 font-medium">TRIZ Contradictions and the Principles We Used</div>
-        </div>
+        <ArtefactLabel label="Table 4" title="TRIZ Contradictions and the Principles We Used" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[680px]">
             <thead>
@@ -217,10 +214,8 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
           criteria come from the design requirements on the Define page. We did not add up a score. Instead we looked
           for any Poor rating, because one serious weakness can make a concept unsuitable for a remote site.
         </p>
-        <div className="text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 5</div>
-          <div className="italic text-sm text-slate-800 font-medium">Qualitative Decision Matrix for the Four Concepts</div>
-        </div>
+        <ArtefactLabel label="Table 5" title="Qualitative Decision Matrix for the Four Concepts" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[760px]">
             <thead>

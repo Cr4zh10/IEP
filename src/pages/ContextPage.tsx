@@ -2,8 +2,10 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
+import { ScrollHint } from '../components/ScrollHint';
 import { Figure } from '../components/Figure';
 import { ArtefactNote } from '../components/ArtefactNote';
+import { ArtefactLabel } from '../components/ArtefactLabel';
 import { MONTHS, RAIN } from '../data/rainfall';
 
 interface ContextPageProps {
@@ -88,7 +90,7 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
           Port Stewart is in eastern Cape York Peninsula, near Princess Charlotte Bay (Figure 1). It is on Lama
           Lama Country. The Lama Lama people are the Traditional Owners of the land and waters around the bay. YAC is
           their not-for-profit organisation, and it manages projects for the Lama Lama Land Trust (LLLT) and the people
-          (YAC, n.d.-c). The Port Stewart Ranger Base is there too (YAC, n.d.-c).
+          (YAC, n.d.-d). The Port Stewart Ranger Base is there too (YAC, n.d.-d).
         </p>
         <p className="text-slate-700 leading-relaxed">
           Floods can cut the roads. Wet-season closures can isolate communities in Cape York for up to five months a
@@ -125,16 +127,14 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
           alt="Satellite image of Princess Charlotte Bay on Cape York Peninsula with a brown plume of river water entering the bay"
           credit={
             <>
-              From <em>River plumes threaten Great Barrier Reef</em> [Satellite image], by the MODIS Rapid Response
-              Team, NASA Goddard Space Flight Center, 2007, NASA Earth Observatory
-              (https://science.nasa.gov/earth/earth-observatory/river-plumes-threaten-great-barrier-reef-7537/). NASA
-              images are generally not subject to copyright in the United States (NASA, 2026).
+              From <em>River plumes threaten Great Barrier Reef</em> [Satellite image], by MODIS Rapid Response Team,
+              2007 (https://science.nasa.gov/earth/earth-observatory/river-plumes-threaten-great-barrier-reef-7537/).
             </>
           }
         />
         <ArtefactNote
           why="We had no photo of the Stewart River itself, so we used a satellite image of the bay."
-          tells="After heavy rain in early 2007, rivers carried muddy water into Princess Charlotte Bay (MODIS Rapid Response Team, 2007). It shows how much water the wet season moves. It is not an image of the Stewart River."
+          tells="Brown river water spreads into Princess Charlotte Bay after heavy rain, which gives a sense of how much water the wet season moves. It is not an image of the Stewart River."
         />
       </section>
 
@@ -147,24 +147,22 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
           about 1,740 mm, which is more than 80% of its yearly rainfall.
         </p>
         <figure className="w-full">
-          <div className="mb-2 text-left">
-            <div className="font-bold text-sm text-[#21295C]">Figure 2</div>
-            <div className="italic text-sm text-slate-800 font-medium">
-              Mean Monthly Rainfall at Lockhart River Airport, 1956–2026
-            </div>
-          </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <div className="flex items-end gap-1.5 sm:gap-2 h-56" role="img" aria-label="Bar chart of mean monthly rainfall, highest from December to April">
+          <ArtefactLabel label="Figure 2" title="Mean Monthly Rainfall at Lockhart River Airport, 1956–2026" className="mb-2" />
+          <div className="rounded-xl border border-slate-200 bg-white p-3 sm:p-4">
+            <div className="flex items-end gap-1 sm:gap-2 h-56" role="img" aria-label="Bar chart of mean monthly rainfall, highest from December to April">
               {RAIN.map((mm, i) => {
                 const wet = i === 11 || i <= 3;
                 return (
-                  <div key={MONTHS[i]} className="flex-1 flex flex-col items-center justify-end h-full">
-                    <span className="text-[10px] sm:text-xs text-slate-600 mb-1">{Math.round(mm)}</span>
+                  <div key={MONTHS[i]} className="flex-1 min-w-0 flex flex-col items-center justify-end h-full" title={`${MONTHS[i]}: ${Math.round(mm)} mm`}>
+                    <span className="text-[11px] sm:text-xs text-slate-600 mb-1">{Math.round(mm)}</span>
                     <div
                       className={`w-full rounded-t ${wet ? 'bg-[#1C7293]' : 'bg-slate-300'}`}
                       style={{ height: `${(mm / max) * 85}%` }}
                     />
-                    <span className="text-[10px] sm:text-xs text-slate-500 mt-1">{MONTHS[i]}</span>
+                    <span className="text-xs text-slate-500 mt-1">
+                      <span className="sm:hidden">{MONTHS[i][0]}</span>
+                      <span className="hidden sm:inline">{MONTHS[i]}</span>
+                    </span>
                   </div>
                 );
               })}
@@ -260,10 +258,8 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
           We used a PESTLE analysis to look at the outside factors that shape our design, before we wrote our
           requirements.
         </p>
-        <div className="mb-2 text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 1</div>
-          <div className="italic text-sm text-slate-800 font-medium">PESTLE Analysis for Water Treatment at Port Stewart</div>
-        </div>
+        <ArtefactLabel label="Table 1" title="PESTLE Analysis for Water Treatment at Port Stewart" className="mb-2" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[640px]">
             <thead>

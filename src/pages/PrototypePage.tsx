@@ -2,8 +2,10 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
+import { ScrollHint } from '../components/ScrollHint';
 import { Figure } from '../components/Figure';
 import { ArtefactNote } from '../components/ArtefactNote';
+import { ArtefactLabel } from '../components/ArtefactLabel';
 
 interface PrototypePageProps {
   onNavigate: (pageId: PageId) => void;
@@ -35,7 +37,7 @@ export const PrototypePage: React.FC<PrototypePageProps> = ({ onNavigate }) => {
       id: 'REQ-02',
       req: 'Simple backwashing',
       how: 'Checked the design against supplier information.',
-      result: 'The Alpine Pure Filox filter can be backwashed, and it comes with a manual control valve option (Oz Filter Warehouse, n.d.).',
+      result: 'The Alpine Pure Filox filter can be backwashed, and it comes with a manual control valve option (Oz Filter Warehouse, n.d.-a).',
       status: 'Design check only',
       next: 'Have an operator try the backwash on a built unit.',
     },
@@ -67,7 +69,7 @@ export const PrototypePage: React.FC<PrototypePageProps> = ({ onNavigate }) => {
       id: 'REQ-06',
       req: 'Corrosion-resistant materials',
       how: 'Material selection from supplier information.',
-      result: 'The Filox vessels are polyethylene-lined fibreglass-reinforced plastic (Oz Filter Warehouse, n.d.) and the settling tank is polyethylene (Clark Tanks, n.d.). Pipework and fittings would be specified with the supplier.',
+      result: 'The Filox vessels are polyethylene-lined fibreglass-reinforced plastic (Oz Filter Warehouse, n.d.-a) and the settling tank is polyethylene (Clark Tanks, n.d.). Pipework and fittings would be specified with the supplier.',
       status: 'Design check only',
       next: 'Confirm with supplier data sheets.',
     },
@@ -96,7 +98,7 @@ export const PrototypePage: React.FC<PrototypePageProps> = ({ onNavigate }) => {
     {
       n: '4',
       title: 'Two backwashable filters',
-      text: 'Catch the fine iron. Each filter is rated for 25 L/min and has a manual valve option (Oz Filter Warehouse, n.d.).',
+      text: 'Catch the fine iron. Each filter is rated for 25 L/min and has a manual valve option (Oz Filter Warehouse, n.d.-a).',
     },
     { n: '5', title: 'Existing header tanks', text: 'Treated water flows to the elevated tanks the community already uses (EWB, n.d.).' },
   ];
@@ -131,10 +133,8 @@ export const PrototypePage: React.FC<PrototypePageProps> = ({ onNavigate }) => {
           they do not test it.
         </p>
 
-        <div className="text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 6</div>
-          <div className="italic text-sm text-slate-800 font-medium">Which Design Requirements the Prototype Tests</div>
-        </div>
+        <ArtefactLabel label="Table 6" title="Which Design Requirements the Prototype Tests" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[860px]">
             <thead>
@@ -234,7 +234,7 @@ export const PrototypePage: React.FC<PrototypePageProps> = ({ onNavigate }) => {
           <p>
             <span className="font-semibold text-[#21295C]">Backwashable filters.</span> Two filter vessels that can be
             cleaned by backwashing, which sends the captured iron to a drain. The supplier offers a manual valve or an
-            automatic valve (Oz Filter Warehouse, n.d.). We chose the manual valve, so that no electronics are needed.
+            automatic valve (Oz Filter Warehouse, n.d.-a). We chose the manual valve, so that no electronics are needed.
             Each filter is rated for 25 L/min, so the two together can take the 33.3 L/min design flow. While one filter
             is being backwashed the other carries the whole flow, which is above its rating, so backwashing should be
             done when demand is low. How often backwashing is needed depends on the real iron load, which we have not

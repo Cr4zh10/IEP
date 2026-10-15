@@ -2,7 +2,9 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
+import { ScrollHint } from '../components/ScrollHint';
 import { ArtefactNote } from '../components/ArtefactNote';
+import { ArtefactLabel } from '../components/ArtefactLabel';
 import { AlertTriangle } from 'lucide-react';
 
 interface DefinePageProps {
@@ -164,10 +166,8 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
           Each requirement has a way of checking it. The Prototype and Test pages report which ones we could check with
           a desktop test and which would need a built unit.
         </p>
-        <div className="text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 3</div>
-          <div className="italic text-sm text-slate-800 font-medium">Design Requirements, Priority and How Each Is Checked</div>
-        </div>
+        <ArtefactLabel label="Table 3" title="Design Requirements, Priority and How Each Is Checked" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[760px]">
             <thead>

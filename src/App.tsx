@@ -47,6 +47,8 @@ export default function App() {
   };
 
   const [currentPageId, setCurrentPageId] = useState<PageId>(getInitialPage);
+  // An element id to scroll to once the new page has drawn (used by the Artefacts page buttons).
+  const [pendingAnchor, setPendingAnchor] = useState<string | null>(null);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -60,10 +62,30 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const handleNavigate = (pageId: PageId) => {
+  // After a page change that asked for an anchor, scroll to that figure or table and flash it.
+  useEffect(() => {
+    if (!pendingAnchor) return;
+    const timer = window.setTimeout(() => {
+      const el = document.getElementById(pendingAnchor);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.remove('artefact-flash');
+        // Force a reflow so the animation restarts if the same artefact is opened twice.
+        void el.offsetWidth;
+        el.classList.add('artefact-flash');
+        window.setTimeout(() => el.classList.remove('artefact-flash'), 2800);
+      }
+      setPendingAnchor(null);
+    }, 120);
+    return () => window.clearTimeout(timer);
+  }, [pendingAnchor, currentPageId]);
+
+  /** Go to a page. Pass an anchor (for example "figure-3") to land on that figure or table. */
+  const handleNavigate = (pageId: PageId, anchor?: string) => {
     setCurrentPageId(pageId);
+    setPendingAnchor(anchor ?? null);
     window.location.hash = pageId;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!anchor) window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Render the selected modular page

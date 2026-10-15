@@ -2,9 +2,22 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
+import { ScrollHint } from '../components/ScrollHint';
 import { RainbowDiagram } from '../components/RainbowDiagram';
-import { STAKEHOLDERS } from '../data/stakeholders';
+import { STAKEHOLDERS, Level } from '../data/stakeholders';
 import { ArtefactNote } from '../components/ArtefactNote';
+import { ArtefactLabel } from '../components/ArtefactLabel';
+
+const INFLUENCE: Record<Level, string> = {
+  most: 'Most influence',
+  moderate: 'Moderate influence',
+  least: 'Least influence',
+};
+const AFFECTED: Record<Level, string> = {
+  most: 'most affected',
+  moderate: 'moderately affected',
+  least: 'least affected',
+};
 
 interface EmpathisePageProps {
   onNavigate: (pageId: PageId) => void;
@@ -109,40 +122,61 @@ export const EmpathisePage: React.FC<EmpathisePageProps> = ({ onNavigate }) => {
           the project. The three rings show how much the project affects them, with the most affected in the centre. We
           placed each stakeholder using what we found in our research.
         </p>
-        <div className="text-left">
-          <div className="font-bold text-sm text-[#21295C]">Figure 3</div>
-          <div className="italic text-sm text-slate-800 font-medium">
-            Stakeholder Rainbow Diagram for Water Treatment at Port Stewart
+        <div id="rainbow-export" className="space-y-3 bg-white">
+          <ArtefactLabel label="Figure 3" title="Stakeholder Rainbow Diagram for Water Treatment at Port Stewart" />
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-5">
+            <div className="grid xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] gap-5 xl:gap-8 items-center">
+              <div className="w-full max-w-3xl mx-auto xl:max-w-none">
+                <RainbowDiagram />
+                <p className="sm:hidden mt-3 text-sm text-slate-700 leading-snug">
+                  <span className="font-semibold text-[#21295C]">How to read it:</span> the left wedge has the most
+                  influence, the middle wedge moderate influence and the right wedge the least. The closer a number is
+                  to the centre, the more the project affects that stakeholder.
+                </p>
+              </div>
+              <div>
+                <div className="font-bold text-[#21295C] mb-3">Key</div>
+                <ol className="space-y-3">
+                  {STAKEHOLDERS.map((st) => (
+                    <li key={st.n} className="flex gap-3 items-start">
+                      <span className="w-8 h-8 rounded-full bg-[#21295C] text-white text-sm font-bold flex items-center justify-center shrink-0">
+                        {st.n}
+                      </span>
+                      <span className="leading-snug">
+                        <span className="font-semibold text-[#21295C] block">{st.name}</span>
+                        <span className="text-xs text-slate-600">
+                          {INFLUENCE[st.influence]} · {AFFECTED[st.affected]}
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
           </div>
+          <p className="text-xs text-slate-600 leading-relaxed">
+            Created by the project team using the rainbow diagram format in Chevalier and Buckles (2008). The positions
+            are the team's judgement from the sources under "Why we placed each stakeholder where we did".
+          </p>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-5 overflow-x-auto">
-          <div className="min-w-[620px]">
-            <RainbowDiagram />
-          </div>
-        </div>
-        <div className="text-sm text-slate-700">
-          <div className="font-bold text-[#21295C] mb-2">Key to Figure 3</div>
-          <ol className="space-y-2">
-            {STAKEHOLDERS.map((st) => (
-              <li key={st.n} className="flex gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#21295C] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                  {st.n}
-                </span>
-                <span className="leading-relaxed">
-                  <span className="font-semibold text-[#21295C]">{st.name}.</span> {st.why}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <p className="text-xs text-slate-600 leading-relaxed">
-          Created by the project team using the rainbow diagram format in Chevalier and Buckles (2008). The positions
-          are the team's judgement from the sources in the key.
-        </p>
         <ArtefactNote
           why="Before writing requirements, we wanted to know who the project affects and who can decide whether it goes ahead."
           tells="The people most affected (Elders, the Land Trust, YAC, the Rangers and residents) are also the ones whose agreement is needed or who would run the unit. Funders and EWB have influence but are little affected by water quality. So the unit has to be simple to run, the community has to agree to it first, and the Rangers and local operators need training."
         />
+
+        <h3 className="font-bold text-[#21295C] text-lg pt-2">Why we placed each stakeholder where we did</h3>
+        <ol className="space-y-3">
+          {STAKEHOLDERS.map((st) => (
+            <li key={st.n} className="flex gap-3 items-start rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <span className="w-8 h-8 rounded-full bg-[#21295C] text-white text-sm font-bold flex items-center justify-center shrink-0">
+                {st.n}
+              </span>
+              <span className="text-slate-700 leading-relaxed">
+                <span className="font-semibold text-[#21295C]">{st.name}.</span> {st.why}
+              </span>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
@@ -152,10 +186,8 @@ export const EmpathisePage: React.FC<EmpathisePageProps> = ({ onNavigate }) => {
           and look after our system, so we followed his day through three stages. The map describes how the current
           system affects him. It is based on our research, not on an interview.
         </p>
-        <div className="text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 2</div>
-          <div className="italic text-sm text-slate-800 font-medium">Geoff's Journey Map With the Current Water System</div>
-        </div>
+        <ArtefactLabel label="Table 2" title="Geoff's Journey Map With the Current Water System" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[680px]">
             <thead>

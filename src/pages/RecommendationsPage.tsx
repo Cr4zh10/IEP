@@ -2,10 +2,11 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
-import { PUBLISHED_PERCENT, RANGE_TEXT } from '../data/costs';
+import { CrossLink } from '../components/CrossLink';
+import { DAYS_AWAY, OPERATOR_PERCENT, PERMIT_EXTRA_DAYS, PUBLISHED_PERCENT, RANGE_TEXT, RUNNING_ROUNDED } from '../data/costs';
 
 interface RecommendationsPageProps {
-  onNavigate: (pageId: PageId) => void;
+  onNavigate: (pageId: PageId, anchor?: string) => void;
 }
 
 /**
@@ -13,7 +14,7 @@ interface RecommendationsPageProps {
  * Abbreviation written out here for the first time: CSIRO.
  */
 export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({ onNavigate }) => {
-  const recs: { title: string; text: string }[] = [
+  const recs: { title: string; text: React.ReactNode }[] = [
     {
       title: 'Use aeration, settling and backwashable filtration',
       text: 'Three of the four published plants that aerate and then filter removed 92.4–98.0% of the iron, and we need at least 76% (Hiiob & Karro, 2012; Todio, 2026; NHMRC, 1996). The fourth removed 43.3%, and the authors think low oxygen is the likely reason, so the Venturi has to add enough oxygen. Aeration followed by filtration is also the option EWB and Arup prefer for this site (EWB, n.d.). Our unit adds no powered parts or chemicals. All of this has to be confirmed with Stewart River water.',
@@ -31,8 +32,38 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({ onNavi
       text: 'A concrete slab, tie-downs and corrosion-resistant parts, using Queensland cyclone guidance for homes as a guide (QRA, 2019). An engineer should check the final design.',
     },
     {
-      title: `Plan for ${RANGE_TEXT} and confirm it with quotes`,
-      text: `This range includes labour, travel and a 20–25% contingency, but only about ${PUBLISHED_PERCENT}% of the subtotal comes from published prices or rates. Get supplier and contractor quotes, and look at private donors and the National Water Grid Fund as possible sources (NWGA, n.d.). Agree the plan with YAC before applying.`,
+      title: 'Ask for permission first, and plan two trips',
+      text: (
+        <>
+          The crew can only work at Port Stewart with the community's agreement (YAC, n.d.-b), so permission comes first
+          and has a date. We plan a short site visit in July to check the pump and pour the slab, then a {DAYS_AWAY}-day
+          installation in September, with October kept as a reserve month. Ask YAC for up to {PERMIT_EXTRA_DAYS} extra
+          days of permission on each trip. Days we do not use cost nothing.{' '}
+          <CrossLink page="implementation" anchor="table-13" onNavigate={onNavigate}>
+            Table 13
+          </CrossLink>{' '}
+          shows each day.
+        </>
+      ),
+    },
+    {
+      title: `Plan for ${RANGE_TEXT} to build and ${RUNNING_ROUNDED} a year to run, and confirm both with quotes`,
+      text: (
+        <>
+          The build range includes labour, travel for both trips and a 20–25% contingency, but only about{' '}
+          {PUBLISHED_PERCENT}% of the subtotal comes from published prices or rates (
+          <CrossLink page="costs" anchor="table-7" onNavigate={onNavigate}>
+            Table 7
+          </CrossLink>
+          ). The yearly running cost is mostly the operator's paid time ({OPERATOR_PERCENT}%), and it depends on our
+          assumptions about hours, filter media life and spare parts (
+          <CrossLink page="costs" anchor="table-11" onNavigate={onNavigate}>
+            Table 11
+          </CrossLink>
+          ). Get supplier and contractor quotes, and look at private donors and the National Water Grid Fund as possible
+          sources (NWGA, n.d.). Agree the plan with YAC before applying.
+        </>
+      ),
     },
   ];
 
@@ -46,7 +77,7 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({ onNavi
       />
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
-        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Five recommendations</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Six recommendations</h2>
         <ol className="space-y-3">
           {recs.map((r, i) => (
             <li key={i} className="rounded-xl border border-slate-200 bg-slate-50 p-4 flex gap-3">
@@ -76,10 +107,11 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({ onNavi
             Measure the dissolved oxygen after the Venturi. Low oxygen is the likely reason one published plant removed
             only 43% of the iron (Hiiob & Karro, 2012).
           </li>
-          <li>Measure the real pump flow and pressure at the intake in the dry season.</li>
+          <li>Measure the real pump flow and pressure at the intake in the dry season, on the July site visit.</li>
           <li>
-            Agree the plan with YAC, the Rangers and the Elders (YAC, n.d.-b), and follow the cultural heritage duty of
-            care in the <em>Aboriginal Cultural Heritage Act 2003</em> (Qld) s 23.
+            Agree the plan with YAC, the Rangers and the Elders (YAC, n.d.-b). That includes permission to enter and
+            stay, the dates and the camping permits. Follow the cultural heritage duty of care in the{' '}
+            <em>Aboriginal Cultural Heritage Act 2003</em> (Qld) s 23.
           </li>
           <li>Replace our cost allowances with real quotes.</li>
         </ul>

@@ -76,14 +76,14 @@ export const PAGES: PageInfo[] = [
     title: 'Costs & Budget',
     shortTitle: 'Costs',
     number: 8,
-    description: 'Cost breakdown, labour and travel detail, and funding sources.',
+    description: 'Build cost, yearly running cost, labour and travel detail, and funding sources.',
   },
   {
     id: 'implementation',
     title: 'Implementation & Considerations',
     shortTitle: 'Implementation',
     number: 9,
-    description: 'Gantt chart, weather, community partnership and the journey after installation.',
+    description: 'Gantt chart, permission to stay, whether ten days is enough, and the journey after installation.',
   },
   {
     id: 'recommendations',

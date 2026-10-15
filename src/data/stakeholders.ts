@@ -23,8 +23,8 @@ export const STAKEHOLDERS: Stakeholder[] = [
     name: 'Elders, the Lama Lama Land Trust and YAC',
     influence: 'most',
     affected: 'most',
-    theta: -72,
-    r: 125,
+    theta: -75,
+    r: 110,
     why: 'The Land Trust authorises decisions about what happens on Country and endorses the projects YAC manages. Eight Elders are nominated each year to guide the YAC Board (YAC, n.d.-b).',
   },
   {
@@ -32,8 +32,8 @@ export const STAKEHOLDERS: Stakeholder[] = [
     name: 'Lama Lama Rangers and local operators',
     influence: 'most',
     affected: 'most',
-    theta: -53,
-    r: 138,
+    theta: -52,
+    r: 150,
     why: 'In our design they would run and clean the unit, so it has to suit their skills. YAC manages the Lama Lama ranger program (YAC, n.d.-b). Geoff, the persona on our journey map, stands for this group.',
   },
   {

@@ -36,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
               <div className="text-sm sm:text-base font-bold text-white tracking-tight leading-tight line-clamp-1">
                 Stewart River Iron-Removal System
               </div>
-              <div className="text-[11px] sm:text-xs text-slate-300 font-normal line-clamp-1">
+              <div className="text-xs text-slate-300 font-normal line-clamp-1">
                 EWB Challenge · Port Stewart, Lama Lama Country · Area 6.2
               </div>
             </div>
@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
 
           {/* Quick status badge / Menu trigger */}
           <div className="flex items-center gap-2">
-            <span className="hidden 2xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#065A82] text-cyan-100 border border-[#1C7293]/50">
+            <span className="hidden min-[1700px]:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#065A82] text-cyan-100 border border-[#1C7293]/50">
               <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
               Design Area 6.2: Water Quality & Treatment
             </span>
@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="2xl:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-200 hover:text-white hover:bg-[#065A82] focus:outline-none focus:ring-2 focus:ring-[#1C7293]"
+              className="min-[1700px]:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-200 hover:text-white hover:bg-[#065A82] focus:outline-none focus:ring-2 focus:ring-[#1C7293]"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
@@ -64,9 +64,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
       </div>
 
       {/* Desktop Horizontal Navigation (Scrollable list with clean indicators) */}
-      <div className="hidden 2xl:block bg-[#065A82] border-t border-[#1C7293]/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center space-x-1 overflow-x-auto py-1 scrollbar-thin scrollbar-thumb-slate-400">
+      <div className="hidden min-[1700px]:block bg-[#065A82] border-t border-[#1C7293]/40">
+        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex items-center justify-center space-x-1 overflow-x-auto py-1 scrollbar-thin scrollbar-thumb-slate-400">
             {PAGES.map((page) => {
               const isActive = page.id === currentPageId;
               return (
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
                   aria-current={isActive ? 'page' : undefined}
                 >
                   <span
-                    className={`text-[10px] w-4 h-4 rounded-full flex items-center justify-center ${
+                    className={`text-xs w-5 h-5 rounded-full flex items-center justify-center ${
                       isActive ? 'bg-[#21295C] text-white' : 'bg-[#21295C]/40 text-slate-300'
                     }`}
                   >
@@ -98,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
 
       {/* Mobile / Tablet Drawer */}
       {mobileMenuOpen && (
-        <div className="2xl:hidden bg-[#21295C] border-t border-[#1C7293]/40 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="min-[1700px]:hidden bg-[#21295C] border-t border-[#1C7293]/40 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="p-3 bg-[#065A82]/50 border-b border-[#1C7293]/30 flex items-center justify-between text-xs text-slate-300">
             <span className="flex items-center gap-1 font-medium">
               <Layers size={14} className="text-cyan-300" /> All Project Sections (13 Pages)
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPageId, onNavigate }) => 
                     <div>
                       <div className="leading-tight">{page.title}</div>
                       <div
-                        className={`text-[11px] ${
+                        className={`text-xs ${
                           isActive ? 'text-slate-500' : 'text-slate-400'
                         }`}
                       >
