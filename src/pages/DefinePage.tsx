@@ -5,6 +5,7 @@ import { PagePagination } from '../components/PagePagination';
 import { ScrollHint } from '../components/ScrollHint';
 import { ArtefactNote } from '../components/ArtefactNote';
 import { ArtefactLabel } from '../components/ArtefactLabel';
+import { WaterSituation } from '../components/WaterSituation';
 import { AlertTriangle } from 'lucide-react';
 
 interface DefinePageProps {
@@ -111,8 +112,22 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
           Water at Port Stewart has high levels of dissolved iron (EWB, 2019), and two bores measured 1.01 mg/L and
           1.25 mg/L (Todio, 2026). An iron filter installed in 2018 is not in operation and has been bypassed for most
           of the time since (Todio, 2026). The solution has to improve water quality and also be practical, reliable
-          and easy to maintain in a remote community.
+          and easy to maintain in a remote community. Figure 3a shows the main facts at a glance.
         </p>
+
+        <figure className="my-6 w-full">
+          <ArtefactLabel label="Figure 3a" title="The Water Situation at Port Stewart at a Glance" className="mb-2" />
+          <WaterSituation />
+          <figcaption className="mt-2 text-xs text-slate-600 leading-relaxed text-left">
+            Created by the team using information from Todio (2026). The post gives the two iron readings but does not
+            say which bore each came from. The dashed line is the ADWG iron guideline of 0.3 mg/L.
+          </figcaption>
+        </figure>
+        <ArtefactNote
+          why="The problem is easier to take in when the three main facts sit side by side."
+          tells="The two iron readings are 3.4 and 4.2 times the 0.3 mg/L guideline. The 2018 filter is not in operation, and we are designing for about 40 people."
+        />
+
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C] pt-2">Project design goal</h2>
         <p className="text-slate-700 leading-relaxed">
           Our project is Design Area 6.2, Drinking water quality and treatment, of the EWB Challenge (EWB, 2026). Our

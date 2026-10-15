@@ -14,5 +14,8 @@ The file names keep their old numbers. The figure numbers shown on the website a
 Figure 3, the rainbow diagram, is drawn by the website from src/data/stakeholders.ts.
 figure-3-rainbow.png is a copy of it for slides and reports, with the key beside the diagram. The website does not need that file.
 
+Figure 3a, the water situation picture on the Define page, is drawn by the website from src/components/WaterSituation.tsx.
+figure-3a-water-situation.png is a copy of it for slides and reports. The website does not need that file.
+
 No photo of people is used on the website. Add one only when you know who took it and have permission
 from the people in it, and write both in the credit line.
