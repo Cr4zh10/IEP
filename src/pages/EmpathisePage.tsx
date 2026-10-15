@@ -99,7 +99,7 @@ export const EmpathisePage: React.FC<EmpathisePageProps> = ({ onNavigate }) => {
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
             <h3 className="font-bold text-[#21295C] mb-1">3. Rainwater does not cover every use</h3>
             <p>
-              Rainwater covers drinking but not other household uses (EWB, 2026). The forum asks teams to assume about
+              Rainwater covers drinking but not other household uses (EWB, 2026b). The forum asks teams to assume about
               40 people (Todio, 2026), and a news report says the Lama Lama population can double to nearly 100 people
               in the dry season (Prestipino, 2024).
             </p>

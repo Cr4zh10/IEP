@@ -120,7 +120,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="space-y-6">
             <p className="text-xl sm:text-2xl leading-snug font-semibold text-[#21295C]">
               This project is Design Area 6.2, Drinking water quality and treatment, of the Engineers Without Borders
-              Australia (EWB) Challenge (EWB, 2026). We designed a <Mark>low-maintenance iron treatment unit</Mark> for
+              Australia (EWB) Challenge (EWB, 2026b). We designed a <Mark>low-maintenance iron treatment unit</Mark> for
               the <Mark>Lama Lama community at Port Stewart</Mark>. It connects to the{' '}
               <Mark>pump and tanks the community already has</Mark>.
             </p>
@@ -238,7 +238,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           Port Stewart is a small community on Lama Lama Country, in eastern Cape York Peninsula (Yintjingga
           Aboriginal Corporation [YAC], n.d.-d). The Challenge forum asks teams to assume about 40 people use the water
           (Todio, 2026). The community pumps its water from the Stewart River. Rainwater tanks can supply drinking
-          water, but not enough for the other things the community needs water for (EWB, 2026).
+          water, but not enough for the other things the community needs water for (EWB, 2026b).
         </p>
         <p className="text-slate-700 leading-relaxed">
           A cyclone destroyed the original river intake in 2006, and the community now uses a diesel pump to take water

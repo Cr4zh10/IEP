@@ -6,6 +6,7 @@ import { ScrollHint } from '../components/ScrollHint';
 import { ArtefactNote } from '../components/ArtefactNote';
 import { ArtefactLabel } from '../components/ArtefactLabel';
 import { WaterSituation } from '../components/WaterSituation';
+import { Figure } from '../components/Figure';
 import { AlertTriangle } from 'lucide-react';
 
 interface DefinePageProps {
@@ -130,7 +131,7 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
 
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C] pt-2">Project design goal</h2>
         <p className="text-slate-700 leading-relaxed">
-          Our project is Design Area 6.2, Drinking water quality and treatment, of the EWB Challenge (EWB, 2026). Our
+          Our project is Design Area 6.2, Drinking water quality and treatment, of the EWB Challenge (EWB, 2026b). Our
           design goal is to create a low-maintenance iron treatment system that improves water quality and is easy
           enough for the community to look after.
         </p>
@@ -138,18 +139,49 @@ export const DefinePage: React.FC<DefinePageProps> = ({ onNavigate }) => {
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Five user needs</h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          {needs.map((n) => (
-            <div key={n.n} className="rounded-xl border border-slate-200 bg-slate-50 p-4 flex gap-3">
-              <div className="w-8 h-8 rounded-full bg-[#21295C] text-white flex items-center justify-center font-bold text-sm shrink-0">
-                {n.n}
+        <div>
+          {/*
+            Two columns on wider screens: the browser balances them, so the needs keep their own height and the
+            photo sits under the last need. On a phone everything is one column, in the order 1 to 5 and then the photo.
+            Each child needs mb-4 and break-inside-avoid.
+          */}
+          <div className="md:columns-2 md:gap-x-4">
+            {needs.map((n) => (
+              <div
+                key={n.n}
+                className="mb-4 break-inside-avoid rounded-xl border border-slate-200 bg-slate-50 p-4 flex gap-3"
+              >
+                <div className="w-8 h-8 rounded-full bg-[#21295C] text-white flex items-center justify-center font-bold text-sm shrink-0">
+                  {n.n}
+                </div>
+                <div>
+                  <h3 className="font-bold text-[#21295C]">{n.title}</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed mt-1">{n.text}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-bold text-[#21295C]">{n.title}</h3>
-                <p className="text-sm text-slate-700 leading-relaxed mt-1">{n.text}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+            <Figure
+              className="mb-4 break-inside-avoid"
+              number="Figure 3b"
+              title="Aerial Photo of a Building and a Large Tank in a Bush Clearing"
+              file="photo-aerial-tank.jpg"
+              size={{ width: 1024, height: 520 }}
+              alt="Aerial photo of a building with a veranda and a large round tank in a clearing among trees. A fenced yard with sheds and vehicles is at the top left, and a red dirt track runs up the left side."
+              credit={
+                <>
+                  From <em>Design Area 6 – Water resilience</em> [Photograph], by Engineers Without Borders Australia,
+                  2026a (https://ewbchallenge.org/challenge/port-stewart-lama-lama/design-area-6-water-resilience/).
+                  The page needs a login. Cropped at the bottom edge.
+                </>
+              }
+            />
+          </div>
+          <div className="pt-3">
+            <ArtefactNote
+              why="A real photo helps readers picture the remote setting that the needs come from."
+              tells="A large round tank and a building with a veranda stand in a clearing. Bush surrounds them, a dirt track runs past, and a fenced yard with sheds and vehicles is nearby. It gives a sense of the remote setting that need 5 describes."
+            />
+          </div>
         </div>
       </section>
 

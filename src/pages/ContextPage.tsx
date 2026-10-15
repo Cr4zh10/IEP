@@ -41,7 +41,7 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
       letter: 'S',
       name: 'Social',
       points: [
-        'Rainwater covers drinking but not other household uses, so river water has to supply the rest (EWB, 2026).',
+        'Rainwater covers drinking but not other household uses, so river water has to supply the rest (EWB, 2026b).',
         'The unit has to be easy to learn. Some Lama Lama locals are due to be trained in water testing and maintenance for the new rainwater system (Prestipino, 2024), so there are local skills to build on.',
       ],
     },

@@ -43,7 +43,7 @@ export const STAKEHOLDERS: Stakeholder[] = [
     affected: 'most',
     theta: 0,
     r: 95,
-    why: 'They drink and use the water. Rainwater covers drinking but not other household uses (EWB, 2026). The Challenge forum asks teams to assume about 40 people (Todio, 2026), and a news report says the Lama Lama population can double to nearly 100 people in the dry season (Prestipino, 2024). They can take part through YAC community meetings (YAC, n.d.-b), so we rated their influence as moderate.',
+    why: 'They drink and use the water. Rainwater covers drinking but not other household uses (EWB, 2026b). The Challenge forum asks teams to assume about 40 people (Todio, 2026), and a news report says the Lama Lama population can double to nearly 100 people in the dry season (Prestipino, 2024). They can take part through YAC community meetings (YAC, n.d.-b), so we rated their influence as moderate.',
   },
   {
     n: 4,
