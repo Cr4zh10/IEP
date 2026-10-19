@@ -1,21 +1,25 @@
-Put your images in this folder using EXACTLY these file names.
-When a file is present it replaces the grey placeholder on the website automatically.
+Images used by the website. The file names are matched in the code, so keep them as they are.
 
-ALREADY HERE (from the team's Task D slides)
-figure-1-map.png            Figure 1  Map of Lama Lama Country
-figure-2-schematic.png      Figure 5  Prototype Treatment Schematic
-concept-render.png          Figure 6  Concept render (generated with ChatGPT)
-figure-3-pressure.png       Figure 7  Venturi pressure simulation
-figure-4-velocity.png       Figure 8  Venturi velocity simulation
-figure-5-iron-removal.png   Figure 9  Iron-removal chart
+figure-1-map.png            Figure 1   Map of Lama Lama Country
+photo-river.jpg             Figure 1a  Satellite image of Princess Charlotte Bay (MODIS Rapid Response Team, 2007, credited on the page)
+photo-aerial-tank.jpg       Figure 3b  Aerial photo of a building and a large tank (EWB, 2026a, credited on the page). Cropped at the bottom edge to leave out one person, and all location and camera data removed
+figure-2-schematic.png      Figure 5   Prototype treatment schematic
+concept-render.png          Figure 6   Concept render (generated with ChatGPT, labelled on the page)
+home-concept.jpg            Figure 6   A smaller copy of concept-render.png that loads faster in the Home page banner
+figure-3-pressure.png       Figure 7   Venturi pressure simulation
+figure-4-velocity.png       Figure 8   Venturi velocity simulation
+figure-5-iron-removal.png   Figure 9   Iron removal at four plants that aerate and then filter
 
-STILL NEEDED
-(Figure 3, the rainbow diagram, is now drawn by the website itself. Edit src/data/stakeholders.ts to change it.)
+The file names keep their old numbers. The figure numbers shown on the website are what count.
 
-REAL PHOTOS (optional but strongly recommended, they only show if the file exists)
-photo-home.jpg              Home page. ADDED. The caption still needs the photographer, source and permission.
-photo-river.jpg             Context page. ADDED. NASA satellite image of Princess Charlotte Bay (credited).
+Figure 3, the rainbow diagram, is drawn by the website from src/data/stakeholders.ts.
+figure-3-rainbow.png is a copy of it for slides and reports, with the key beside the diagram. The website does not need that file.
 
-(The file names for figures keep their old numbers. The labels shown on the website are what count.)
+Figure 3a, the water situation picture on the Define page, is drawn by the website from src/components/WaterSituation.tsx.
+figure-3a-water-situation.png is a copy of it for slides and reports. The website does not need that file.
 
-figure-3-rainbow.png is a copy of the diagram for slides and reports. The website itself draws Figure 3, so this file is not needed to run it.
+No photo of people is used on the website. Add one only when you know who took it and have permission
+from the people in it, and write both in the credit line.
+
+Photos from phones and drones carry hidden data, including the GPS position where they were taken.
+Remove it before a photo goes into this folder (open the photo, save a copy without metadata, or crop and re-save it).

@@ -2,10 +2,10 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
-import { ImagePlaceholder } from '../components/ImagePlaceholder';
+import { ScrollHint } from '../components/ScrollHint';
+import { Figure } from '../components/Figure';
 import { ArtefactNote } from '../components/ArtefactNote';
-import { DraftBadge } from '../components/DraftBadge';
-import { Photo } from '../components/Photo';
+import { ArtefactLabel } from '../components/ArtefactLabel';
 import { MONTHS, RAIN } from '../data/rainfall';
 
 interface ContextPageProps {
@@ -14,57 +14,62 @@ interface ContextPageProps {
 
 /**
  * PAGE 2: CONTEXT
- * New abbreviations defined here: YAC, BOM, AWA, NWGA.
+ * Abbreviations written out here for the first time: BOM, NWGA, CfAT, LLLT, MODIS.
+ * (YAC, EWB, TMR, NHMRC and ADWG were written out on the Home page.)
  */
 export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
   const max = Math.max(...RAIN);
 
-  const pestle = [
+  const pestle: { letter: string; name: string; points: React.ReactNode[] }[] = [
     {
       letter: 'P',
       name: 'Political',
       points: [
-        'Lama Lama Country is governed through YAC. Any work on Country needs agreement from YAC, the Rangers and Elders (YAC, n.d.-a).',
-        'The Australian Government has set aside funding for First Nations water infrastructure, but not for our project (National Water Grid Authority [NWGA], n.d.).',
+        'Land Trusts hold land for Traditional Owners and authorise decisions about what happens on Country. YAC manages projects for the Lama Lama people, and the Lama Lama Land Trust endorses them (YAC, n.d.-b).',
+        'The Australian Government has allocated $150 million through the National Water Grid Fund for First Nations water infrastructure. It can pay for construction, including water treatment systems, but proposals must show engagement with the communities and manage cultural heritage impacts (National Water Grid Authority [NWGA], n.d.).',
       ],
     },
     {
       letter: 'E',
       name: 'Economic',
       points: [
-        'Port Stewart is remote, so freight and travel add a lot to any project cost (Best Rated Transport, 2026).',
-        'Running costs have to stay low, because the community cannot easily pay for chemicals, parts or call-out visits.',
+        'Port Stewart is remote, so freight and travel add a lot to any project cost. A freight guide says surcharges for remote Cape York can add 30–80% to standard freight rates (Best Rated Transport, 2026).',
+        'Running costs have to stay low. The community is small, and chemicals, parts and call-out visits all have to come from far away.',
       ],
     },
     {
       letter: 'S',
       name: 'Social',
       points: [
-        'The community uses river water for washing, cooking and cleaning, because the rainwater tanks cannot supply enough for these uses (EWB, 2026).',
-        'The system must be easy to learn. Some Lama Lama locals are already trained in water testing and maintenance, which is the kind of skill the design builds on (National Indigenous Times, 2024).',
+        'Rainwater covers drinking but not other household uses, so river water has to supply the rest (EWB, 2026b).',
+        'The unit has to be easy to learn. Some Lama Lama locals are due to be trained in water testing and maintenance for the new rainwater system (Prestipino, 2024), so there are local skills to build on.',
       ],
     },
     {
       letter: 'T',
       name: 'Technological',
       points: [
-        'Aeration followed by filtration has removed iron in comparable treatment plants (Hiiob & Karro, 2012).',
-        'The site has no mains power, so the design uses the existing pump and passive aeration instead of electrical equipment (EWB, n.d.).',
+        'Aeration followed by a filter is a standard way to remove iron (Swistock et al., 2025). In Estonia, three of four plants that aerate and then filter removed more than 90% of their iron, and the fourth removed 43% (Hiiob & Karro, 2012).',
+        'The treatment that EWB and Arup recommend for the iron at Port Stewart needs no power or chemicals (EWB, n.d.). Our unit follows that approach and uses the pump flow to draw in air.',
       ],
     },
     {
       letter: 'L',
       name: 'Legal',
       points: [
-        'The ADWG give 0.30 mg/L as the aesthetic guideline value for iron (NHMRC, 2025a).',
-        'The Aboriginal Cultural Heritage Act 2003 (Qld) places a duty of care on anyone working on the land, so heritage clearance comes before any digging or slab work (Queensland Government, 2003).',
+        'The ADWG give 0.3 mg/L as the aesthetic guideline value for iron (NHMRC, 1996). We use it as our target.',
+        <>
+          A person who carries out an activity must take all reasonable and practicable measures not to harm Aboriginal
+          cultural heritage (<em>Aboriginal Cultural Heritage Act 2003</em> (Qld) s 23). We would agree a heritage
+          approach with the Traditional Owners before any digging or slab work.
+        </>,
       ],
     },
     {
       letter: 'E',
       name: 'Environmental',
       points: [
-        'Most rain falls between December and April, and cyclones can damage equipment (Figure 2; AWA, 2018; BOM, 2026).',
+        'Most rain falls between December and April (Figure 2), and a cyclone has already destroyed the river intake once (EWB, 2019). Equipment has to be built for wind and flood.',
         'The iron solids that we wash out of the filters must drain away from the river and from the community water supply.',
       ],
     },
@@ -82,67 +87,82 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Where is Port Stewart?</h2>
         <p className="text-slate-700 leading-relaxed">
-          Port Stewart is on the east coast of Cape York Peninsula, beside Princess Charlotte Bay. It is on Lama Lama
-          Country. The Lama Lama people care for this Country, and it is governed through the Yintjingga Aboriginal
-          Corporation (YAC; EWB, 2026; YAC, n.d.-b).
+          Port Stewart is in eastern Cape York Peninsula, near Princess Charlotte Bay (Figure 1). It is on Lama
+          Lama Country. The Lama Lama people are the Traditional Owners of the land and waters around the bay. YAC is
+          their not-for-profit organisation, and it manages projects for the Lama Lama Land Trust (LLLT) and the people
+          (YAC, n.d.-d). The Port Stewart Ranger Base is there too (YAC, n.d.-d).
         </p>
         <p className="text-slate-700 leading-relaxed">
-          Roads to the community can be cut off when creeks and rivers flood, which makes deliveries and repair visits
-          difficult (RDA Tropical North, 2023).
+          Floods can cut the roads. Wet-season closures can isolate communities in Cape York for up to five months a
+          year, which makes deliveries and repair visits hard (TMR, 2023).
         </p>
 
-        <ImagePlaceholder
-          figureNumber="Figure 1"
-          figureTitle="Map of Lama Lama Country"
-          imageFile="figure-1-map.png"
-          noteText="Map from YAC (2014). Reproduced to show the Lama Lama Country boundary, Princess Charlotte Bay and the Stewart River."
-          altText="Map of Lama Lama Country showing Princess Charlotte Bay and the Stewart River"
+        <Figure
+          number="Figure 1"
+          title="Map of Lama Lama Country"
+          file="figure-1-map.png"
+          alt="Map of Lama Lama Country showing Princess Charlotte Bay, Port Stewart and the Stewart River"
+          credit={
+            <>
+              From <em>Aakurru (Our home)</em> [Map], by Yintjingga Aboriginal Corporation, n.d.-a
+              (https://www.lamalama.org.au/country/). The website does not name the map's creator or give a date.
+            </>
+          }
         />
         <ArtefactNote
-          why="We needed to show where the project is, and who the land belongs to, before talking about the water."
-          tells="Port Stewart is far from large towns and sits on Aboriginal-owned land (see the map legend), so any work there has to be agreed with the Traditional Owners."
+          why="Before talking about water, we wanted readers to see where Port Stewart is and whose Country it is."
+          tells="The map legend says Aboriginal freehold land is private property owned and managed by Traditional Owners, so any work at Port Stewart has to be agreed with them."
         />
-        <Photo
-          file="photo-river.jpg"
-          alt="Satellite image of Princess Charlotte Bay on Cape York Peninsula with a brown plume of river water entering the bay"
-          figureNumber="Figure 1a"
+
+        <p className="text-slate-700 leading-relaxed">
+          We could not find a photo of the Stewart River, so Figure 1a shows the bay it runs towards. The National Aeronautics and Space
+          Administration (NASA) took the image with its Moderate Resolution Imaging Spectroradiometer (MODIS) on 9
+          February 2007, after heavy rain.
+        </p>
+        <Figure
+          number="Figure 1a"
           title="Princess Charlotte Bay From Space, 9 February 2007"
+          file="photo-river.jpg"
           narrow
-          credit="From River plumes threaten Great Barrier Reef [Satellite image], by the MODIS Rapid Response Team, 2007, NASA Earth Observatory (https://science.nasa.gov/earth/earth-observatory/river-plumes-threaten-great-barrier-reef-7537/). In the public domain. MODIS is the Moderate Resolution Imaging Spectroradiometer, an instrument on a NASA satellite."
+          alt="Satellite image of Princess Charlotte Bay on Cape York Peninsula with a brown plume of river water entering the bay"
+          credit={
+            <>
+              From <em>River plumes threaten Great Barrier Reef</em> [Satellite image], by MODIS Rapid Response Team,
+              2007 (https://science.nasa.gov/earth/earth-observatory/river-plumes-threaten-great-barrier-reef-7537/).
+            </>
+          }
         />
         <ArtefactNote
-          why="We could not show a photo of the Stewart River itself, so we used a real satellite image of the bay the river flows into."
-          tells="After heavy rain, brown river water spreads across Princess Charlotte Bay (MODIS Rapid Response Team, 2007). It shows how much sediment the wet season moves, and why the water supply changes through the year."
+          why="We had no photo of the Stewart River itself, so we used a satellite image of the bay."
+          tells="Brown river water spreads into Princess Charlotte Bay after heavy rain, which gives a sense of how much water the wet season moves. It is not an image of the Stewart River."
         />
       </section>
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Climate: wet and dry seasons</h2>
         <p className="text-slate-700 leading-relaxed">
-          Cape York has a strong wet season and dry season. We used long-term rainfall records from the Bureau of
-          Meteorology (BOM) station at Lockhart River Airport as a guide for the region. It is on Cape York but it is
-          not at Port Stewart, so Port Stewart's own numbers will be different. About 85% of the yearly rain falls
-          between December and April (BOM, 2026).
+          Cape York has a strong wet season and a strong dry season. For rainfall we used the long-term record from the
+          Bureau of Meteorology (BOM) station at Lockhart River Airport (BOM, 2026). The station is on Cape York but it
+          is not at Port Stewart, so Port Stewart's own numbers will differ. From December to April the station gets
+          about 1,740 mm, which is more than 80% of its yearly rainfall.
         </p>
         <figure className="w-full">
-          <div className="mb-2 text-left">
-            <div className="font-bold text-sm text-[#21295C]">Figure 2</div>
-            <div className="italic text-sm text-slate-800 font-medium">
-              Mean Monthly Rainfall at Lockhart River Airport, 1956–2026
-            </div>
-          </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <div className="flex items-end gap-1.5 sm:gap-2 h-56" role="img" aria-label="Bar chart of mean monthly rainfall, highest from December to April">
+          <ArtefactLabel label="Figure 2" title="Mean Monthly Rainfall at Lockhart River Airport, 1956–2026" className="mb-2" />
+          <div className="rounded-xl border border-slate-200 bg-white p-3 sm:p-4">
+            <div className="flex items-end gap-1 sm:gap-2 h-56" role="img" aria-label="Bar chart of mean monthly rainfall, highest from December to April">
               {RAIN.map((mm, i) => {
                 const wet = i === 11 || i <= 3;
                 return (
-                  <div key={MONTHS[i]} className="flex-1 flex flex-col items-center justify-end h-full">
-                    <span className="text-[10px] sm:text-xs text-slate-600 mb-1">{Math.round(mm)}</span>
+                  <div key={MONTHS[i]} className="flex-1 min-w-0 flex flex-col items-center justify-end h-full" title={`${MONTHS[i]}: ${Math.round(mm)} mm`}>
+                    <span className="text-[11px] sm:text-xs text-slate-600 mb-1">{Math.round(mm)}</span>
                     <div
                       className={`w-full rounded-t ${wet ? 'bg-[#1C7293]' : 'bg-slate-300'}`}
                       style={{ height: `${(mm / max) * 85}%` }}
                     />
-                    <span className="text-[10px] sm:text-xs text-slate-500 mt-1">{MONTHS[i]}</span>
+                    <span className="text-xs text-slate-500 mt-1">
+                      <span className="sm:hidden">{MONTHS[i][0]}</span>
+                      <span className="hidden sm:inline">{MONTHS[i]}</span>
+                    </span>
                   </div>
                 );
               })}
@@ -154,28 +174,27 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
             </div>
           </div>
           <figcaption className="mt-2 text-xs text-slate-600 leading-relaxed text-left">
-            <span className="italic font-semibold">Note.</span> Data from BOM (2026), Lockhart River Airport (site
-            028008), used as a regional guide. The wet and dry labels are our grouping of the monthly totals.
+            Created by the team using data from the Bureau of Meteorology (2026) for Lockhart River Airport (site
+            028008). The wet and dry groupings are ours.
           </figcaption>
         </figure>
         <ArtefactNote
-          why="The tutor feedback and our own design both depend on timing. We needed real rainfall data to decide when freight and installation can happen."
-          tells="June to October each get less than 60 mm of rain, so that is the safest time for freight and building. December to April is when roads are most likely to be cut."
+          why="Freight and building depend on the weather, so we needed real rainfall figures to choose a time window."
+          tells="June to October each average less than 60 mm, which makes them the safest months for freight and building. Wet-season road closures run roughly from November to April (Best Rated Transport, 2026)."
         />
         <div className="grid sm:grid-cols-2 gap-4 text-slate-700 leading-relaxed">
           <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
             <h3 className="font-bold text-[#21295C] mb-1">Dry season (about June–October)</h3>
             <p className="text-sm">
-              River levels drop. Each dry season, when the river falls below the bed sand, the community digs an
-              improvised pond in the riverbed so that the pump can keep working (EWB, n.d.). Roads are open, so this is
-              the time for deliveries.
+              River levels drop. Each dry season, when the water falls below the bed sand, the community digs an
+              improvised pond in the riverbed (EWB, n.d.). Roads are usually open, so this is the time for deliveries.
             </p>
           </div>
           <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
             <h3 className="font-bold text-[#21295C] mb-1">Wet season (about December–April)</h3>
             <p className="text-sm">
-              Heavy rain, flooding and cyclones. Road access can be cut (RDA Tropical North, 2023), so parts and
-              technicians cannot get in. Equipment must be built to survive wind and flood.
+              Heavy rain, flooding and cyclones. Roads can be cut for months (TMR, 2023), so parts and technicians cannot
+              get in. Equipment has to survive wind and flood.
             </p>
           </div>
         </div>
@@ -187,30 +206,45 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
           <li>
             <div className="text-xs font-semibold text-[#1C7293]">2006</div>
             <p className="text-slate-700 leading-relaxed">
-              A cyclone destroyed the original river intake (Australian Water Association [AWA], 2018). Since then the community has used a diesel pump
-              to take water from the river (EWB, n.d.).
+              A cyclone destroyed the original river intake (EWB, 2019). The community now draws water from the river with
+              a diesel pump (EWB, n.d.).
             </p>
           </li>
           <li>
             <div className="text-xs font-semibold text-[#1C7293]">2015 onwards</div>
             <p className="text-slate-700 leading-relaxed">
-              The engineering company Arup began working with EWB and YAC on a better water
-              supply (AWA, 2018; EWB, 2019).
+              The engineering company Arup began giving pro bono engineering support to the project in 2015 (EWB, 2025).
+              It designed a new river intake and then a treatment system, working with the Centre for Appropriate
+              Technology (CfAT) and the community (EWB, n.d.).
+            </p>
+          </li>
+          <li>
+            <div className="text-xs font-semibold text-[#1C7293]">2018</div>
+            <p className="text-slate-700 leading-relaxed">
+              The Australian Water Association (AWA) reported on Arup's design, which aerates the water so the iron can be
+              filtered out, with ultraviolet light for E. coli (AWA, 2018). An iron filter was installed in 2018 and has
+              been bypassed for most of the time since (Todio, 2026).
+            </p>
+          </li>
+          <li>
+            <div className="text-xs font-semibold text-[#1C7293]">2024 and 2025</div>
+            <p className="text-slate-700 leading-relaxed">
+              The Yaru Foundation funded the materials for a rainwater system for drinking water, delivered by YAC and the LLLT, with
+              training for local people planned (Prestipino, 2024; EWB, 2025).
             </p>
           </li>
           <li>
             <div className="text-xs font-semibold text-[#1C7293]">Planned by EWB and Arup</div>
             <p className="text-slate-700 leading-relaxed">
               A new intake below the river bed sands, with solar-powered submersible pumps and a backup diesel
-              generator. Arup also designed an iron-removal treatment, and the preferred option is aeration and
-              filtration (EWB, n.d.).
+              generator. For the iron, Arup's design names aeration and filtration as the preferred option (EWB, n.d.).
             </p>
           </li>
           <li>
             <div className="text-xs font-semibold text-[#1C7293]">Today (the gap we work on)</div>
             <p className="text-slate-700 leading-relaxed">
-              The river water still has high dissolved iron, and earlier filters were blocked by it (EWB, 2026). Our
-              project is the treatment step, Design Area 6.2.
+              The water still has a lot of dissolved iron (EWB, 2019), and the 2018 filter is mostly bypassed (Todio,
+              2026). Our project is the treatment step, Design Area 6.2.
             </p>
           </li>
         </ol>
@@ -218,16 +252,14 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">
-          Political, Economic, Social, Technological, Legal and Environmental (PESTLE) analysis<DraftBadge />
+          Political, Economic, Social, Technological, Legal and Environmental (PESTLE) analysis
         </h2>
         <p className="text-slate-700 leading-relaxed">
           We used a PESTLE analysis to look at the outside factors that shape our design, before we wrote our
           requirements.
         </p>
-        <div className="mb-2 text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 1</div>
-          <div className="italic text-sm text-slate-800 font-medium">PESTLE Analysis for Water Treatment at Port Stewart</div>
-        </div>
+        <ArtefactLabel label="Table 1" title="PESTLE Analysis for Water Treatment at Port Stewart" className="mb-2" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[640px]">
             <thead>
@@ -255,8 +287,8 @@ export const ContextPage: React.FC<ContextPageProps> = ({ onNavigate }) => {
           </table>
         </div>
         <ArtefactNote
-          why="PESTLE makes us look at more than the technical problem. We wanted to find the legal, cultural and seasonal limits before choosing a design."
-          tells="Cultural heritage clearance, low running costs, and building for wet and dry seasons are all requirements, not extras. Each one appears in our design requirements on the Define page."
+          why="We looked for the legal, cultural and seasonal limits before choosing a design."
+          tells="Cultural heritage, low running costs and building for the wet and dry seasons all shape our design requirements on the Define page."
         />
       </section>
 

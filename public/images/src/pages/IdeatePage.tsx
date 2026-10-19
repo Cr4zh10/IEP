@@ -2,8 +2,9 @@ import React from 'react';
 import { PageId } from '../types';
 import { PageHeader } from '../components/PageHeader';
 import { PagePagination } from '../components/PagePagination';
+import { ScrollHint } from '../components/ScrollHint';
 import { ArtefactNote } from '../components/ArtefactNote';
-import { DraftBadge } from '../components/DraftBadge';
+import { ArtefactLabel } from '../components/ArtefactLabel';
 
 interface IdeatePageProps {
   onNavigate: (pageId: PageId) => void;
@@ -30,12 +31,12 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
       name: 'Filtration only',
       what: 'Filter the raw river water directly, with no treatment before the filter.',
       pro: 'Cheapest and simplest to install.',
-      con: 'Dissolved iron blocks filters quickly. This is what happened to earlier filters at Port Stewart (EWB, 2026).',
+      con: 'All the iron load goes onto the filter media, so we expect it to need more frequent backwashing. Oxidising filters need regular backwashing (Swistock et al., 2025).',
     },
     {
       n: 2,
       name: 'Chemical iron treatment',
-      what: 'Add a chemical (such as chlorine or permanganate) to turn dissolved iron into solid particles (Penn State Extension, 2024).',
+      what: 'Add a chemical (such as chlorine or permanganate) to turn dissolved iron into solid particles (Swistock et al., 2025).',
       pro: 'Works on dissolved iron.',
       con: 'Needs a regular chemical supply and careful handling, which is hard to keep up in a remote community.',
     },
@@ -44,14 +45,14 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
       name: 'New treatment plant',
       what: 'Replace the whole system with a packaged treatment plant.',
       pro: 'Strong treatment.',
-      con: 'Expected to cost the most, and it throws away the pump and tanks that already exist. We have not costed it.',
+      con: 'We expect it to cost the most, and it would replace the pump and tanks that already exist. We have not costed it.',
     },
     {
       n: 4,
       name: 'Aeration, settling and backwashable filtration',
       what: 'A Venturi aerator adds air, a settling tank lets the iron particles sink, and backwashable filters catch the rest.',
       pro: 'No chemicals. Easy to clean. Reuses the pump and tanks.',
-      con: 'More parts than filtration only. Performance on site water has not been measured yet.',
+      con: 'More parts than filtration only. Its performance on Stewart River water has not been measured.',
       selected: true,
     },
   ];
@@ -62,7 +63,7 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
     { name: 'Cost', why: 'Budget', ratings: ['Very good', 'Fair', 'Poor', 'Good'] },
     { name: 'Reuses existing assets', why: 'REQ-03', ratings: ['Good', 'Fair', 'Poor', 'Very good'] },
     { name: 'Suits a remote community', why: 'REQ-05, REQ-07', ratings: ['Fair', 'Poor', 'Poor', 'Very good'] },
-    { name: 'Reliability', why: 'Needs 3 and 4', ratings: ['Poor', 'Fair', 'Good', 'Very good'] },
+    { name: 'Reliability', why: 'Need 3', ratings: ['Poor', 'Fair', 'Good', 'Very good'] },
   ];
 
   const triz = [
@@ -74,7 +75,7 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
     {
       contradiction: 'We want to reuse the existing pump, but we do not want a powered air compressor to add air.',
       principle: 'Self-service (principle 25)',
-      how: 'The water flowing through a Venturi creates its own suction and pulls air in, so no extra power is needed.',
+      how: 'The water flowing through a Venturi creates its own suction and pulls air in, so no compressor is needed.',
     },
     {
       contradiction: 'Fine filter media catches fine iron, but fine media blocks quickly.',
@@ -103,20 +104,16 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">Why these four concepts?</h2>
         <p className="text-slate-700 leading-relaxed">
-          We started by asking what the basic ways of removing dissolved iron are. There are three broad routes. We
-          can filter it, change it with a chemical, or replace the whole system (Penn State Extension, 2024). Our
-          fourth concept comes from the approach EWB and Arup prefer for this site, aeration followed by filtration,
-          which needs no chemicals and very little maintenance (EWB, n.d.). Each concept is a different answer to the
-          same question, so the comparison is fair.
+          We started by listing the basic ways to deal with dissolved iron. Swistock et al. (2025) describe oxidising
+          filters, chemical oxidation followed by filtration, and aeration followed by filtration, among other methods.
+          Our first two concepts are the filter-only and chemical routes. The third is a
+          packaged plant that replaces the whole system. The fourth comes from the approach EWB and Arup prefer for
+          this site, aeration followed by filtration, which needs no power or chemicals and very little maintenance
+          (EWB, n.d.). Each concept answers the same question in a different way, so the comparison is fair.
         </p>
 
         <figure className="w-full">
-          <div className="mb-2 text-left">
-            <div className="font-bold text-sm text-[#21295C]">
-              Figure 4 <DraftBadge />
-            </div>
-            <div className="italic text-sm text-slate-800 font-medium">Feasibility and Innovation of the Four Concepts</div>
-          </div>
+          <ArtefactLabel label="Figure 4" title="Feasibility and Innovation of the Four Concepts" className="mb-2" />
           <div className="rounded-xl border border-slate-200 bg-white p-3">
             <svg viewBox="0 0 520 380" className="w-full max-w-2xl mx-auto h-auto" role="img" aria-label="Chart of feasibility against innovation for the four concepts">
               <rect x="50" y="10" width="460" height="320" fill="#F8FAFC" stroke="#CBD5E1" />
@@ -140,29 +137,28 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
             </svg>
           </div>
           <figcaption className="mt-2 text-xs text-slate-600 leading-relaxed text-left">
-            <span className="italic font-semibold">Note.</span> Positions are the team's judgement, not measurements.
-            Feasibility asks whether the concept could be built, run and repaired at Port Stewart. Innovation asks how
-            new the approach is compared with what is already used there.
+            Created by the project team. Positions are the team's judgement, not measurements. Feasibility asks
+            whether the concept could be built, run and repaired at Port Stewart. Innovation asks how new the approach
+            is compared with what is already used there.
           </figcaption>
         </figure>
         <ArtefactNote
-          why="To check that the four concepts were different enough, and to see whether a more unusual idea was also workable."
+          why="We checked that the four concepts really differ, and whether the more unusual ideas could work at a remote site."
           tells="Concept 3 is more ambitious but the least feasible at a remote site. Concept 4 is the only one that is both highly feasible and more than a simple filter."
         />
       </section>
 
       <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C]">
-          Theory of Inventive Problem Solving (TRIZ): solving the trade-offs<DraftBadge />
+          Theory of Inventive Problem Solving (TRIZ): solving the trade-offs
         </h2>
         <p className="text-slate-700 leading-relaxed">
-          TRIZ helps when improving one thing makes another thing worse. We
-          found three trade-offs in this project and used TRIZ principles to look for ways around them.
+          TRIZ helps when improving one thing makes another thing worse. We found three trade-offs in this project and
+          used TRIZ principles (Mistakeproofing Architecture Engineering and Construction, n.d.) to look for ways
+          around them.
         </p>
-        <div className="text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 4</div>
-          <div className="italic text-sm text-slate-800 font-medium">TRIZ Contradictions and the Principles We Used</div>
-        </div>
+        <ArtefactLabel label="Table 4" title="TRIZ Contradictions and the Principles We Used" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[680px]">
             <thead>
@@ -183,9 +179,13 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
             </tbody>
           </table>
         </div>
+        <p className="text-xs text-slate-600 leading-relaxed">
+          Created by the project team. Principle names and numbers follow Mistakeproofing Architecture Engineering and
+          Construction (n.d.).
+        </p>
         <ArtefactNote
-          why="To find design ideas that avoid trade-offs, instead of only picking the least bad option."
-          tells="The three features that make Concept 4 work (staged treatment, passive aeration, backwashing) each come from resolving a specific trade-off."
+          why="TRIZ gave us a way to look for ideas that avoid a trade-off instead of just choosing the least bad option."
+          tells="Three features of Concept 4 (staged treatment, passive aeration and backwashing) each match one of these trade-offs."
         />
       </section>
 
@@ -214,10 +214,8 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
           criteria come from the design requirements on the Define page. We did not add up a score. Instead we looked
           for any Poor rating, because one serious weakness can make a concept unsuitable for a remote site.
         </p>
-        <div className="text-left">
-          <div className="font-bold text-sm text-[#21295C]">Table 5</div>
-          <div className="italic text-sm text-slate-800 font-medium">Qualitative Decision Matrix for the Four Concepts</div>
-        </div>
+        <ArtefactLabel label="Table 5" title="Qualitative Decision Matrix for the Four Concepts" />
+        <ScrollHint />
         <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left border-collapse min-w-[760px]">
             <thead>
@@ -246,12 +244,12 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
             </tbody>
           </table>
         </div>
-        <p className="text-xs text-slate-600">
-          <span className="italic font-semibold">Note.</span> Ratings are the team's judgement from the sources cited
-          above (EWB, n.d.; EWB, 2026; Penn State Extension, 2024). They are not measurements.
+        <p className="text-xs text-slate-600 leading-relaxed">
+          Created by the project team. Ratings are the team's judgement, informed by EWB (n.d.) and Swistock et al.
+          (2025). We made them before testing, and they are not measurements.
         </p>
         <ArtefactNote
-          why="To compare the concepts in a fair, visible way, using the same criteria for each."
+          why="Every concept is rated against the same criteria, so the comparison can be read and challenged."
           tells="Concepts 1, 2 and 3 each have at least one Poor rating on something that matters a lot at Port Stewart. Concept 4 has none."
         />
       </section>
@@ -262,7 +260,7 @@ export const IdeatePage: React.FC<IdeatePageProps> = ({ onNavigate }) => {
           <li>It is the only concept with no Poor rating in Table 5.</li>
           <li>It treats the main problem. Air turns dissolved iron into solid particles that can be settled and filtered.</li>
           <li>It follows the aeration and filtration approach preferred by EWB and Arup for this site (EWB, n.d.).</li>
-          <li>It reuses the pump and header tanks, so we expect it to cost far less than a new plant. We have not costed a new plant.</li>
+          <li>It reuses the pump and header tanks, so we expect it to cost less than a new plant. We have not costed a new plant.</li>
           <li>Backwashing lets operators clean the filters without replacing cartridges.</li>
         </ul>
       </section>

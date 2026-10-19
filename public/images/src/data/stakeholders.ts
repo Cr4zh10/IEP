@@ -20,21 +20,21 @@ export interface Stakeholder {
 export const STAKEHOLDERS: Stakeholder[] = [
   {
     n: 1,
-    name: 'Elders and the Yintjingga Aboriginal Corporation',
+    name: 'Elders, the Lama Lama Land Trust and YAC',
     influence: 'most',
     affected: 'most',
-    theta: -72,
-    r: 125,
-    why: 'Work on Country needs their agreement (YAC, n.d.-a), and they live with the water supply every day.',
+    theta: -75,
+    r: 110,
+    why: 'The Land Trust authorises decisions about what happens on Country and endorses the projects YAC manages. Eight Elders are nominated each year to guide the YAC Board (YAC, n.d.-b).',
   },
   {
     n: 2,
-    name: 'Lama Lama Rangers and Geoff, the local technician',
+    name: 'Lama Lama Rangers and local operators',
     influence: 'most',
     affected: 'most',
-    theta: -53,
-    r: 138,
-    why: 'Their agreement is also needed (YAC, n.d.-a), and they would run and repair the unit (EWB, 2026).',
+    theta: -52,
+    r: 150,
+    why: 'In our design they would run and clean the unit, so it has to suit their skills. YAC manages the Lama Lama ranger program (YAC, n.d.-b). Geoff, the persona on our journey map, stands for this group.',
   },
   {
     n: 3,
@@ -43,7 +43,7 @@ export const STAKEHOLDERS: Stakeholder[] = [
     affected: 'most',
     theta: 0,
     r: 95,
-    why: 'They drink and use the water, and rainwater alone only covers drinking (EWB, 2026; EWB Challenge, n.d.). They have a say through YAC, so we rated their influence as moderate.',
+    why: 'They drink and use the water. Rainwater covers drinking but not other household uses (EWB, 2026b). The Challenge forum asks teams to assume about 40 people (Todio, 2026), and a news report says the Lama Lama population can double to nearly 100 people in the dry season (Prestipino, 2024). They can take part through YAC community meetings (YAC, n.d.-b), so we rated their influence as moderate.',
   },
   {
     n: 4,
@@ -52,7 +52,7 @@ export const STAKEHOLDERS: Stakeholder[] = [
     affected: 'moderate',
     theta: -12,
     r: 235,
-    why: 'Arup helped plan the new intake and treatment options, and our unit may have to connect to its work (EWB, n.d.).',
+    why: 'Arup designed a new river intake and an iron-removal treatment, and our unit may have to connect to its work (EWB, n.d.).',
   },
   {
     n: 5,
@@ -61,7 +61,7 @@ export const STAKEHOLDERS: Stakeholder[] = [
     affected: 'least',
     theta: 10,
     r: 345,
-    why: 'EWB wrote the brief and works with the community, but it does not use the water itself.',
+    why: 'EWB runs the Challenge and has worked with the community on the water supply, but it does not use the water itself (EWB, 2025).',
   },
   {
     n: 6,
@@ -70,7 +70,7 @@ export const STAKEHOLDERS: Stakeholder[] = [
     affected: 'least',
     theta: -62,
     r: 345,
-    why: 'Without funding the project cannot go ahead, but the funders are not affected by the water quality (NWGA, n.d.).',
+    why: 'Without funding the project cannot go ahead, but funders do not use the water. The Yaru Foundation funded the materials for the rainwater system (EWB, 2025), and the National Water Grid Fund has $150 million for First Nations water infrastructure (NWGA, n.d.).',
   },
   {
     n: 7,
@@ -79,7 +79,7 @@ export const STAKEHOLDERS: Stakeholder[] = [
     affected: 'moderate',
     theta: 58,
     r: 235,
-    why: 'They install the unit and travel in for the work, so wet-season roads and access affect them. They follow the plan and do not decide it.',
+    why: 'They install the unit and travel in for the work, so wet-season road closures affect them (TMR, 2023). They follow the plan and do not decide it.',
   },
   {
     n: 8,

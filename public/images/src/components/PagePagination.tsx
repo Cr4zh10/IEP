@@ -30,7 +30,7 @@ export const PagePagination: React.FC<PagePaginationProps> = ({
             <ArrowLeft size={16} />
           </div>
           <div>
-            <div className="text-[11px] font-medium uppercase tracking-wider text-slate-400">
+            <div className="text-xs font-medium uppercase tracking-wider text-slate-500">
               Previous Page
             </div>
             <div className="text-sm font-semibold text-[#21295C] line-clamp-1">
@@ -49,7 +49,7 @@ export const PagePagination: React.FC<PagePaginationProps> = ({
           className="group flex items-center justify-between sm:justify-end gap-3 p-3.5 sm:p-4 rounded-xl border border-slate-200 bg-white hover:border-[#1C7293] hover:bg-slate-50 transition-all text-right w-full sm:w-auto sm:max-w-xs shadow-xs ml-auto"
         >
           <div className="text-left sm:text-right">
-            <div className="text-[11px] font-medium uppercase tracking-wider text-slate-400">
+            <div className="text-xs font-medium uppercase tracking-wider text-slate-500">
               Next Page
             </div>
             <div className="text-sm font-semibold text-[#21295C] line-clamp-1">

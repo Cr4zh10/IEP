@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+/*
+ * Text sizes.
+ * Tailwind's default sizes are small on a laptop or desktop screen (body 16 px, tables 14 px,
+ * captions 12 px). These values raise every step by about one size, so body text is 18 px,
+ * tables and cards are 16 px and captions are 14 px. Change a value here and the whole site follows.
+ */
+@theme {
+  /*
+   * The list of pages shows down the left side from this screen width up (1440 px). Below it, the drop-down in the
+   * top bar is used. In the code the size is called "side", for example side:block. Change it here and it changes everywhere.
+   */
+  --breakpoint-side: 90rem;
+
+  --text-xs: 0.875rem;
+  --text-xs--line-height: 1.55;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.6;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.7;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.6;
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 1.35;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 1.3;
+  --text-3xl: 2.125rem;
+  --text-3xl--line-height: 1.2;
+  --text-4xl: 2.625rem;
+  --text-4xl--line-height: 1.15;
+  --text-5xl: 3.25rem;
+  --text-5xl--line-height: 1.1;
+}
+
 html {
   scroll-behavior: smooth;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -9,4 +42,60 @@ body {
   background-color: #F4F8FA;
   color: #1e293b;
   min-height: 100vh;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+/* Short yellow flash on a figure or table label after the Artefacts page jumps to it. */
+@keyframes artefact-flash {
+  0% {
+    background-color: rgba(253, 224, 71, 0);
+    box-shadow: 0 0 0 0 rgba(253, 224, 71, 0);
+  }
+  15% {
+    background-color: rgba(253, 224, 71, 0.75);
+    box-shadow: 0 0 0 8px rgba(253, 224, 71, 0.75);
+  }
+  70% {
+    background-color: rgba(253, 224, 71, 0.55);
+    box-shadow: 0 0 0 8px rgba(253, 224, 71, 0.55);
+  }
+  100% {
+    background-color: rgba(253, 224, 71, 0);
+    box-shadow: 0 0 0 8px rgba(253, 224, 71, 0);
+  }
+}
+
+.artefact-flash {
+  animation: artefact-flash 2.6s ease-out 1;
+}
+
+/* The page drop-down in the top bar fades and slides in. */
+@keyframes menu-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.menu-pop {
+  animation: menu-pop 140ms ease-out 1;
+  transform-origin: top right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .menu-pop {
+    animation: none;
+  }
+  .artefact-flash {
+    animation: none;
+    background-color: rgba(253, 224, 71, 0.6);
+  }
 }

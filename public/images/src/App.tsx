@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from './types';
 import { Navbar } from './components/Navbar';
+import { SideNav } from './components/SideNav';
 import { Footer } from './components/Footer';
 import { BackToTop } from './components/BackToTop';
 
@@ -47,6 +48,8 @@ export default function App() {
   };
 
   const [currentPageId, setCurrentPageId] = useState<PageId>(getInitialPage);
+  // An element id to scroll to once the new page has drawn (used by the Artefacts page buttons).
+  const [pendingAnchor, setPendingAnchor] = useState<string | null>(null);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -60,10 +63,30 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const handleNavigate = (pageId: PageId) => {
+  // After a page change that asked for an anchor, scroll to that figure or table and flash it.
+  useEffect(() => {
+    if (!pendingAnchor) return;
+    const timer = window.setTimeout(() => {
+      const el = document.getElementById(pendingAnchor);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.remove('artefact-flash');
+        // Force a reflow so the animation restarts if the same artefact is opened twice.
+        void el.offsetWidth;
+        el.classList.add('artefact-flash');
+        window.setTimeout(() => el.classList.remove('artefact-flash'), 2800);
+      }
+      setPendingAnchor(null);
+    }, 120);
+    return () => window.clearTimeout(timer);
+  }, [pendingAnchor, currentPageId]);
+
+  /** Go to a page. Pass an anchor (for example "figure-3") to land on that figure or table. */
+  const handleNavigate = (pageId: PageId, anchor?: string) => {
     setCurrentPageId(pageId);
+    setPendingAnchor(anchor ?? null);
     window.location.hash = pageId;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!anchor) window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Render the selected modular page
@@ -105,10 +128,16 @@ export default function App() {
       {/* Sticky top navigation bar */}
       <Navbar currentPageId={currentPageId} onNavigate={handleNavigate} />
 
-      {/* Main page content container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-        {renderPage()}
-      </main>
+      {/*
+        Page area. On wide screens (the "side" size, 1440 px and up, set at the top of src/index.css) the list of
+        pages sits down the left side and the page content sits to its right. side:max-w-[97rem] = the old content
+        width (80rem) + the side list (15rem) + the gap (2rem). On narrower screens the side list is hidden and
+        the drop-down in the top bar is used.
+      */}
+      <div className="flex-1 w-full max-w-7xl side:max-w-[97rem] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 side:flex side:items-start side:gap-8">
+        <SideNav currentPageId={currentPageId} onNavigate={handleNavigate} />
+        <main className="min-w-0 w-full side:flex-1">{renderPage()}</main>
+      </div>
 
       {/* Floating Back to Top Button */}
       <BackToTop />

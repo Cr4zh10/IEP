@@ -27,14 +27,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       </div>
 
       {/* Main Footer Details */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl side:max-w-[97rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-slate-700/60">
           <div>
             <h4 className="text-white font-bold text-base mb-2">
               Stewart River Iron-Removal System
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed mb-3">
-              Design Area 6.2: Water Quality and Treatment. A university engineering design project for the Engineers Without Borders Challenge, about water supply at Port Stewart on Lama Lama Country, Cape York, Queensland.
+              Design Area 6.2: Drinking Water Quality and Treatment. A university engineering design project for the Engineers Without Borders Challenge, about water supply at Port Stewart on Lama Lama Country, Cape York, Queensland.
             </p>
             <div className="text-xs text-cyan-300 font-mono">
               University Engineering Design Project · 2026
@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div>© 2026 Ethan Illidge, Huy Truong, Natalia Tran and Tan Dong</div>
+          <div>Written and built by Ethan Illidge, Huy Truong, Natalia Tran and Tan Dong, 2026. Figures and data credited to other sources belong to those sources.</div>
         </div>
       </div>
     </footer>
