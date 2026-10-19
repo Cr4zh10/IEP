@@ -125,8 +125,8 @@ export const EmpathisePage: React.FC<EmpathisePageProps> = ({ onNavigate }) => {
         <div id="rainbow-export" className="space-y-3 bg-white">
           <ArtefactLabel label="Figure 3" title="Stakeholder Rainbow Diagram for Water Treatment at Port Stewart" />
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-5">
-            <div className="grid xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] gap-5 xl:gap-8 items-center">
-              <div className="w-full max-w-3xl mx-auto xl:max-w-none">
+            <div className="grid xl:max-side:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] 2xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] gap-5 xl:max-side:gap-8 2xl:gap-8 items-center">
+              <div className="w-full max-w-3xl mx-auto xl:max-side:max-w-none 2xl:max-w-none">
                 <RainbowDiagram />
                 <p className="sm:hidden mt-3 text-sm text-slate-700 leading-snug">
                   <span className="font-semibold text-[#21295C]">How to read it:</span> the left wedge has the most

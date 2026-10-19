@@ -7,6 +7,12 @@
  * tables and cards are 16 px and captions are 14 px. Change a value here and the whole site follows.
  */
 @theme {
+  /*
+   * The list of pages shows down the left side from this screen width up (1440 px). Below it, the drop-down in the
+   * top bar is used. In the code the size is called "side", for example side:block. Change it here and it changes everywhere.
+   */
+  --breakpoint-side: 90rem;
+
   --text-xs: 0.875rem;
   --text-xs--line-height: 1.55;
   --text-sm: 1rem;
@@ -29,7 +35,6 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 110%;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -65,9 +70,29 @@ body {
   animation: artefact-flash 2.6s ease-out 1;
 }
 
+/* The page drop-down in the top bar fades and slides in. */
+@keyframes menu-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.menu-pop {
+  animation: menu-pop 140ms ease-out 1;
+  transform-origin: top right;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .menu-pop {
+    animation: none;
   }
   .artefact-flash {
     animation: none;

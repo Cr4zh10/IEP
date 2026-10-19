@@ -95,9 +95,9 @@ const BypassDrawing: React.FC = () => (
 
 export const WaterSituation: React.FC = () => (
   <div className="rounded-xl border border-slate-200 bg-white p-3 sm:p-4" role="img" aria-label={ARIA_SUMMARY}>
-    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-[1.5fr_1fr_1fr]">
+    <div className="grid gap-4 sm:grid-cols-2 xl:max-side:grid-cols-[1.5fr_1fr_1fr] 2xl:grid-cols-[1.5fr_1fr_1fr]">
       {/* 1. Iron */}
-      <Panel className="sm:col-span-2 xl:col-span-1">
+      <Panel className="sm:col-span-2 xl:max-side:col-span-1 2xl:col-span-1">
         <PanelHead icon={<Droplets size={22} />} kicker="Iron in the water" title="Both bores are above the guideline" />
         <p className="mt-2 text-sm leading-relaxed text-slate-700">Iron measured at two bores, in milligrams per litre.</p>
 

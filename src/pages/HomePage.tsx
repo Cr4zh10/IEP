@@ -257,7 +257,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* Key numbers */}
       <section>
         <h2 className="text-xl sm:text-2xl font-bold text-[#21295C] mb-4">Key numbers</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:max-side:grid-cols-4 2xl:grid-cols-4 gap-5">
           <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
             <div className="text-3xl font-black text-[#065A82]">76%</div>
             <h3 className="font-bold text-[#21295C] mt-1">Minimum iron removal</h3>
